@@ -1,26 +1,12 @@
 <template>
-  <!-- How It Works -->
-  <section id="how" class="border-t border-white/10 bg-slate-950">
-    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
-      <h2 class="text-2xl sm:text-3xl font-semibold tracking-tight">How It Works (3 Steps)</h2>
-      <ol class="mt-8 grid md:grid-cols-3 gap-4">
-        <li class="rounded-2xl border border-white/10 bg-white/[.03] p-4">
-          <div class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#6209F6]/20 ring-1 ring-[#6209F6]/30 text-sm">1</div>
-          <h3 class="mt-3 font-medium">Upload Image & Prompt</h3>
-          <p class="text-xs text-slate-400">JPG/PNG/WebP ≤10MB; recommended ≥512px</p>
-        </li>
-        <li class="rounded-2xl border border-white/10 bg-white/[.03] p-4">
-          <div class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#6209F6]/20 ring-1 ring-[#6209F6]/30 text-sm">2</div>
-          <h3 class="mt-3 font-medium">Choose a Model</h3>
-          <p class="text-xs text-slate-400">Model selection links resolution and duration options</p>
-        </li>
-        <li class="rounded-2xl border border-white/10 bg-white/[.03] p-4">
-          <div class="inline-flex h-7 w-7 items-center justify-center rounded-lg bg-[#6209F6]/20 ring-1 ring-[#6209F6]/30 text-sm">3</div>
-          <h3 class="mt-3 font-medium">Generate & Download</h3>
-          <p class="text-xs text-slate-400">Preview video, then download high-quality output</p>
-        </li>
-      </ol>
-    </div>
-  </section>
+  <section id="how-it-works" style="background-color: var(--card-color);">
+            <div class="container">
+                <div class="section-header"><h2 class="gradient-text">How to Use MuseSteamer AI</h2><p>Our intuitive workflow removes technical barriers, freeing you to focus purely on your creative vision.</p></div>
+                <div class="steps-container">
+                    <article class="step"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" /></svg></div><h3>1. Upload & Prompt</h3><p>Begin with any image. Write a simple prompt to direct the AI—describe the mood, action, and dialogue.</p></article>
+                    <article class="step"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9.594 3.94c.09-.542.56-1.007 1.11-.952l2.397.387A6 6 0 0121 9.75v1.072a6 6 0 01-5.787 5.962l-2.397.387c-.55.089-1.02-.41-1.11-.952l-.387-2.397A6 6 0 013 9.75V8.678a6 6 0 015.787-5.962l.387-2.397z" /></svg></div><h3>2. Select Your Engine</h3><p>Choose the perfect AI model for your project, from the rapid Turbo model to the ultra-high-quality 1080p Pro.</p></article>
+                    <article class="step"><div class="step-icon"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" /></svg></div><h3>3. Generate & Share</h3><p>Click 'Generate.' In moments, your AI-crafted video is ready to be previewed, downloaded, and shared with the world.</p></article>
+                </div>
+            </div>
+        </section>
 </template>
-

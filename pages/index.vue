@@ -1,71 +1,31 @@
 <template>
-  <div class="bg-slate-950 text-slate-100">
+  <div>
+    <Hero />
+    <!-- <div class="container text-center">
+      <a href="#" class="btn btn-primary">Start Creating Your First Video &rarr;</a>
+    </div> -->
 
-    <main>
-      <MuseSteamerHeader />
-      <MuseSteamerHero />
-      <MuseSteamerGenerator />
-      <MuseSteamerAdvantages />
-      <MuseSteamerUseCases />
-      <MuseSteamerHowItWorks />
-      <MuseSteamerFaq />
-      <MuseSteamerPricing />
-      <MuseSteamerCta />
-    </main>
+    <Advantages />
+    <Examples />
+    <About />
+    <HowItWorks />
+    <Pricing />
+    <Faq />
   </div>
 </template>
 
 <script setup lang="ts">
-import MuseSteamerHeader from '~/components/MuseSteamer/Header.vue'
-import MuseSteamerHero from '~/components/MuseSteamer/Hero.vue'
-import MuseSteamerGenerator from '~/components/MuseSteamer/Generator.vue'
-import MuseSteamerAdvantages from '~/components/MuseSteamer/Advantages.vue'
-import MuseSteamerUseCases from '~/components/MuseSteamer/UseCases.vue'
-import MuseSteamerHowItWorks from '~/components/MuseSteamer/HowItWorks.vue'
-import MuseSteamerFaq from '~/components/MuseSteamer/Faq.vue'
-import MuseSteamerPricing from '~/components/MuseSteamer/Pricing.vue'
-import MuseSteamerCta from '~/components/MuseSteamer/Cta.vue'
+import Hero from '~/components/MuseSteamer/Hero.vue'
+import About from '~/components/MuseSteamer/About.vue'
+import Advantages from '~/components/MuseSteamer/Advantages.vue'
+import Examples from '~/components/MuseSteamer/Examples.vue'
+import HowItWorks from '~/components/MuseSteamer/HowItWorks.vue'
+import Pricing from '~/components/MuseSteamer/Pricing.vue'
+import Faq from '~/components/MuseSteamer/Faq.vue'
 
-useHead({
-  title: 'MuseSteamer AI - Multimodal Video Generation in One Click',
-  meta: [
-    { name: 'description', content: 'Turn a single image and a prompt into voiced, silent, or VFX videos. Cinematic quality, professional camera moves, and native-level Chinese speech fidelityall in minutes.' },
-    { name: 'theme-color', content: '#6209F6' },
-    { property: 'og:title', content: 'MuseSteamer AI - Multimodal Video Generation in One Click' },
-    { property: 'og:description', content: 'From an image + prompt to voiced, silent, or VFX videos with cinematic fidelity and professional camera moves.' },
-    { property: 'og:type', content: 'website' },
-    { property: 'og:url', content: 'https://www.example.com/' },
-    { property: 'og:image', content: 'https://www.example.com/og-cover.jpg' },
-    { name: 'twitter:card', content: 'summary_large_image' },
-    { name: 'twitter:title', content: 'MuseSteamer AI - Multimodal Video Generation in One Click' },
-    { name: 'twitter:description', content: 'Create cinematic videos from an image + promptvoiced, silent, or VFXin minutes.' },
-    { name: 'twitter:image', content: 'https://www.example.com/og-cover.jpg' },
-  ],
-  link: [
-    { rel: 'canonical', href: 'https://www.example.com/' }
-  ],
-  style: [
-    { innerHTML: 'html { scroll-behavior: smooth; }' }
-  ],
-  script: [
-    {
-      type: 'application/ld+json',
-      innerHTML: JSON.stringify({
-        "@context":"https://schema.org",
-        "@type":"SoftwareApplication",
-        "name":"MuseSteamer AI",
-        "applicationCategory":"MultimediaApplication",
-        "operatingSystem":"Web",
-        "description":"Multimodal video generationvoiced, silent, or VFXwith cinematic quality and master-level camera moves.",
-        "offers":{
-          "@type":"AggregateOffer",
-          "offerCount":"3",
-          "lowPrice":"29",
-          "highPrice":"199",
-          "priceCurrency":"USD"
-        }
-      })
-    }
-  ]
+useSeoMeta({
+  title: 'MuseSteamer AI | The Ultimate AI Video Generator for Cinematic Content',
+  description: 'Developed by Baidu, MuseSteamer AI transforms your images into stunning videos with cinematic quality, master-level cinematography, and perfectly synchronized dialogue.',
+  keywords: 'Baidu AI, MuseSteamer, AI video generator, text to video, image to video AI, create AI video, cinematic AI, AI for marketing, video creation tool, multimodal AI',
 })
 </script>

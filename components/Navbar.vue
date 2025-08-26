@@ -8,7 +8,8 @@
           <!-- Logo -->
           <div class="flex-shrink-0">
             <NuxtLink to="/">
-              <span class="text-banana-primary-yellow text-2xl lg:text-3xl font-bold">Nano Banana 🍌</span>
+        
+                <span class="bg-gradient-to-r from-[#6209F6] via-[#DC8AF6] to-[#83D0FB] bg-clip-text text-transparent"> MuseSteamer AI</span>
             </NuxtLink>
           </div>
 
