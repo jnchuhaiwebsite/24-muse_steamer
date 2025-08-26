@@ -44,6 +44,7 @@ export const urlList = {
  */
 export const setUserInfo = async (data: any) => {
   try {
+    alert(1222)
     // 如果已有有效Token，直接返回缓存的用户信息
     const token = getValidToken();
     if (token) {

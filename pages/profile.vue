@@ -1,12 +1,12 @@
 <template>
-  <div class="min-h-screen bg-banana-dark-bg text-banana-text-light pt-[80px]">
+  <div class="min-h-screen bg-gradient-to-br from-[#0F172A] via-[#1E293B] to-[#334155] text-gray-100 pt-[80px]">
     <!-- 用户信息卡片 -->
-    <div class="max-w-7xl mx-auto bg-banana-card-bg p-6 rounded-lg shadow-sm mb-6 border border-banana-border-color">
+    <div class="max-w-7xl mx-auto bg-gray-800 p-6 rounded-lg shadow-lg mb-6 border border-gray-700">
       <!-- 基本信息 -->
       <div class="flex items-center space-x-6">
         <div class="relative">
-          <img :src="userInfo.avatar||'/img/default-avatar.png'" alt="avatar" class="w-24 h-24 rounded-full border-4 border-banana-secondary-blue shadow-md">
-          <div v-if="userInfo.vip_last_time > 0" class="absolute -bottom-2 -right-2 bg-banana-primary-yellow text-banana-dark-bg rounded-full p-1">
+          <img :src="userInfo.avatar||'/img/default-avatar.png'" alt="avatar" class="w-24 h-24 rounded-full border-4 border-[#6209F6] shadow-md">
+          <div v-if="userInfo.vip_last_time > 0" class="absolute -bottom-2 -right-2 bg-gradient-to-r from-[#6209F6] to-[#2574E9] text-white rounded-full p-1 shadow-lg">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
               <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
             </svg>
@@ -14,30 +14,30 @@
         </div>
         <div class="flex-1">
           <div class="flex items-center space-x-3">
-            <h2 class="text-2xl font-bold text-banana-text-light">{{ userInfo.nickname }}</h2>
-            <span v-if="userInfo.vip_last_time > 0" class="px-2 py-1 bg-banana-primary-yellow text-banana-dark-bg text-sm rounded-full">VIP Member</span>
+            <h2 class="text-2xl font-bold text-gray-100">{{ userInfo.nickname }}</h2>
+            <span v-if="userInfo.vip_last_time > 0" class="px-2 py-1 bg-gradient-to-r from-[#6209F6] to-[#2574E9] text-white text-sm rounded-full shadow-md">VIP Member</span>
           </div>
-          <p class="text-banana-text-muted mt-1">{{ userInfo.email }}</p>
-          <p class="text-banana-text-muted text-sm mt-1">Registered: {{ formatDate(userInfo.created_at) }}</p>
-          <p class="text-banana-text-muted text-sm">Login Method: {{ userInfo.from_login === 'google' ? 'Google' : 'Other' }}</p>
+          <p class="text-gray-300 mt-1">{{ userInfo.email }}</p>
+          <p class="text-gray-300 text-sm mt-1">Registered: {{ formatDate(userInfo.created_at) }}</p>
+          <p class="text-gray-300 text-sm">Login Method: {{ userInfo.from_login === 'google' ? 'Google' : 'Other' }}</p>
         </div>
       </div>
       
       <!-- 使用次数信息 -->
       <div class="mt-8">
-        <div class="bg-gradient-to-r from-banana-card-bg/50 to-banana-card-bg p-6 rounded-xl border border-banana-border-color shadow-sm">
+        <div class="bg-gradient-to-r from-gray-700 to-gray-800 p-6 rounded-xl border border-gray-600 shadow-lg">
           <div class="flex items-center gap-4">
-            <div class="bg-banana-primary-yellow p-3 rounded-full">
-              <SparklesIcon class="h-8 w-8 text-banana-dark-bg" />
+            <div class="bg-gradient-to-r from-[#6209F6] to-[#2574E9] p-3 rounded-full shadow-lg">
+              <SparklesIcon class="h-8 w-8 text-white" />
             </div>
             <div>
-              <p class="text-banana-text-light text-sm font-medium">Remaining Credits</p>
-              <p class="text-3xl font-bold text-banana-primary-yellow mt-1">{{ userInfo.free_limit + userInfo.remaining_limit }}</p>
+              <p class="text-gray-200 text-sm font-medium">Remaining Credits</p>
+              <p class="text-3xl font-bold bg-gradient-to-r from-[#6209F6] to-[#2574E9] bg-clip-text text-transparent mt-1">{{ userInfo.free_limit + userInfo.remaining_limit }}</p>
             </div>
             <!-- 添加查看记录按钮 -->
             <button 
               @click="openCreditRecords"
-              class="ml-auto px-4 py-2 bg-banana-secondary-blue hover:opacity-90 rounded-lg text-white transition-colors flex items-center gap-2"
+              class="ml-auto px-4 py-2 bg-gradient-to-r from-[#6209F6] to-[#2574E9] hover:from-[#5A08E0] hover:to-[#1E63C7] rounded-lg text-white transition-all duration-300 flex items-center gap-2 shadow-lg hover:shadow-xl"
             >
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
@@ -49,12 +49,12 @@
       </div>
 
       <!-- VIP信息 -->
-      <div v-if="userInfo.vip_last_time > 0" class="mt-6 bg-banana-primary-yellow/10 p-4 rounded-lg border border-banana-primary-yellow/30">
+      <div v-if="userInfo.vip_last_time > 0" class="mt-6 bg-gradient-to-r from-gray-700 to-gray-800 p-4 rounded-lg border border-[#DC8AF6] shadow-lg">
         <div class="flex items-center space-x-2">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-banana-primary-yellow" viewBox="0 0 20 20" fill="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#6209F6]" viewBox="0 0 20 20" fill="currentColor">
             <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
           </svg>
-          <p class="text-banana-primary-yellow font-medium">VIP Membership Valid Until: {{ formatDate(userInfo.vip_last_time) }}</p>
+          <p class="bg-gradient-to-r from-[#6209F6] to-[#2574E9] bg-clip-text text-transparent font-medium">VIP Membership Valid Until: {{ formatDate(userInfo.vip_last_time) }}</p>
         </div>
       </div>
     </div>
@@ -64,15 +64,15 @@
       class="fixed inset-0 z-[100] flex items-center justify-center bg-black/50 backdrop-blur-sm"
       @click="closeCreditRecords"
     >
-      <div class="relative w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-3xl bg-banana-card-bg/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-banana-border-color" 
+      <div class="relative w-[95%] sm:w-[85%] md:w-[75%] lg:w-[65%] xl:w-[55%] max-w-3xl bg-white/95 backdrop-blur-md rounded-2xl shadow-2xl overflow-hidden border border-gray-200" 
         @click.stop
       >
         <!-- 弹框头部 -->
-        <div class="flex items-center justify-between p-6 border-b border-banana-border-color">
-          <h3 class="text-xl font-bold text-banana-text-light">Credit History</h3>
+        <div class="flex items-center justify-between p-6 border-b border-gray-200">
+          <h3 class="text-xl font-bold text-gray-800">Credit History</h3>
           <button 
             @click="closeCreditRecords"
-            class="text-banana-text-muted hover:text-banana-text-light transition-colors"
+            class="text-gray-500 hover:text-gray-800 transition-colors"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -85,22 +85,22 @@
           <!-- 积分记录列表 -->
           <div class="space-y-4">
             <div v-for="record in creditRecords" :key="record.id" 
-              class="flex items-center justify-between p-4 bg-banana-dark-bg backdrop-blur-sm rounded-xl hover:bg-banana-border-color/30 transition-all duration-300 border border-banana-border-color">
+              class="flex items-center justify-between p-4 bg-gray-50 backdrop-blur-sm rounded-xl hover:bg-gray-100 transition-all duration-300 border border-gray-200">
               <div class="flex items-center space-x-4">
                 <!-- 图标 -->
                 <div class="p-3 rounded-xl" :class="{
-                  'bg-green-100 text-green-600': record.change_type === 'register_give',
-                  'bg-banana-secondary-blue/20 text-banana-secondary-blue': record.change_type === 'buy_package',
-                  'bg-banana-primary-yellow/10 text-banana-primary-yellow': record.change_type === 'create_task_free',
-                  'bg-red-500/10 text-red-500': record.change_type === 'create_task'
+                  'bg-green-900 text-green-400': record.change_type === 'register_give',
+                  'bg-gradient-to-r from-gray-700 to-gray-800 text-[#6209F6]': record.change_type === 'buy_package',
+                  'bg-yellow-900 text-yellow-400': record.change_type === 'create_task_free',
+                  'bg-red-900 text-red-400': record.change_type === 'create_task'
                 }">
                   <component :is="getCreditTypeIcon(record.change_type)" class="h-6 w-6" />
                 </div>
                 
                 <!-- 记录信息 -->
                 <div>
-                  <p class="text-banana-text-light font-medium">{{ getCreditTypeText(record.change_type) }}</p>
-                  <p class="text-banana-text-muted text-sm">{{ formatDate(record.created_at) }}</p>
+                  <p class="text-gray-800 font-medium">{{ getCreditTypeText(record.change_type) }}</p>
+                  <p class="text-gray-500 text-sm">{{ formatDate(record.created_at) }}</p>
                 </div>
               </div>
               
@@ -118,35 +118,35 @@
 
           <!-- 加载状态 -->
           <div v-if="creditLoading" class="text-center py-8">
-            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-banana-text-muted border-t-banana-primary-yellow"></div>
+            <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-400 border-t-[#6209F6]"></div>
           </div>
 
           <!-- 空状态 -->
           <div v-if="!creditLoading && creditRecords.length === 0" class="text-center py-12">
-            <div class="inline-block p-4 rounded-full bg-banana-dark-bg mb-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-banana-text-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <div class="inline-block p-4 rounded-full bg-gray-700 mb-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 8v4l3 3m6-3a9 9 0 1 1-18 0 9 9 0 0 1 18 0z"/>
               </svg>
             </div>
-            <p class="text-banana-text-muted">No credit history yet</p>
+            <p class="text-gray-300">No credit history yet</p>
           </div>
 
           <!-- 分页控件 -->
           <div v-if="!creditLoading && creditRecords.length > 0" class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
             <!-- 每页显示数量选择器 -->
             <div class="flex items-center gap-2">
-              <span class="text-banana-text-muted text-sm">Show</span>
+              <span class="text-gray-300 text-sm">Show</span>
               <select 
                 v-model="creditPageSize"
                 @change="handlePageSizeChange(Number(creditPageSize))"
-                class="bg-banana-dark-bg text-banana-text-light rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-banana-primary-yellow border border-banana-border-color"
+                class="bg-gray-700 text-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6209F6] border border-gray-600"
               >
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="20">20</option>
                 <option value="50">50</option>
               </select>
-              <span class="text-banana-text-muted text-sm">entries</span>
+              <span class="text-gray-300 text-sm">entries</span>
             </div>
 
             <!-- 分页按钮 -->
@@ -155,11 +155,11 @@
                 @click="handlePageChange(creditPage - 1)"
                 :disabled="creditPage === 1"
                 class="px-3 py-1.5 rounded-lg text-sm transition-colors border"
-                :class="[
-                  creditPage === 1 
-                    ? 'bg-banana-dark-bg text-banana-text-muted cursor-not-allowed border-banana-border-color' 
-                    : 'bg-banana-dark-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
-                ]"
+                                  :class="[
+                    creditPage === 1 
+                      ? 'bg-gray-600 text-gray-400 cursor-not-allowed border-gray-500' 
+                      : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
+                  ]"
               >
                 Previous
               </button>
@@ -172,8 +172,8 @@
                   class="w-8 h-8 rounded-lg text-sm transition-colors border"
                   :class="[
                     page === creditPage 
-                      ? 'bg-banana-primary-yellow text-banana-dark-bg border-banana-primary-yellow' 
-                      : 'bg-banana-dark-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
+                      ? 'bg-gradient-to-r from-[#6209F6] to-[#2574E9] text-white border-transparent' 
+                      : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
                   ]"
                 >
                   {{ page }}
@@ -186,8 +186,8 @@
                 class="px-3 py-1.5 rounded-lg text-sm transition-colors border"
                 :class="[
                   creditPage === totalPages 
-                    ? 'bg-banana-dark-bg text-banana-text-muted cursor-not-allowed border-banana-border-color' 
-                    : 'bg-banana-dark-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
+                    ? 'bg-gray-600 text-gray-400 cursor-not-allowed border-gray-500' 
+                    : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
                 ]"
               >
                 Next
@@ -201,10 +201,10 @@
     <!-- 作品列表 -->
     <div id="works-section" class="max-w-7xl mx-auto px-4 py-8">
       <div class="flex justify-between items-center mb-6">
-        <h3 class="text-xl font-bold text-banana-text-light">My Works</h3>
+        <h3 class="text-xl font-bold text-gray-100">My Works</h3>
         <button 
           @click="handleRefresh"
-          class="flex items-center gap-2 px-4 py-2 bg-banana-secondary-blue rounded-lg shadow-sm hover:opacity-90 transition-all text-white"
+          class="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#6209F6] to-[#2574E9] hover:from-[#5A08E0] hover:to-[#1E63C7] rounded-lg shadow-lg hover:shadow-xl transition-all duration-300 text-white"
           :disabled="loading"
         >
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" :class="{'animate-spin': loading}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -224,8 +224,8 @@
           class="px-6 py-2 rounded-full transition-all border"
           :class="[
             currentTab === tab.value 
-              ? 'bg-banana-primary-yellow text-banana-dark-bg shadow-lg font-medium border-banana-primary-yellow' 
-              : 'bg-banana-card-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
+              ? 'bg-gradient-to-r from-[#6209F6] to-[#2574E9] text-white shadow-lg font-medium border-transparent' 
+              : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
           ]"
         >
           {{ tab.label }}
@@ -254,7 +254,7 @@
                 <!-- 视频加载状态指示器 -->
                 <div v-if="videoLoadingStates.get(work.task_id)" class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
                   <div class="text-center">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-banana-text-muted border-t-banana-primary-yellow mb-2"></div>
+                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-400 border-t-[#6209F6] mb-2"></div>
                     <p class="text-white text-sm">Loading...</p>
                   </div>
                 </div>
@@ -262,7 +262,7 @@
               <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
                 <button 
                   @click="openLightbox(work.quality_image)"
-                  class="bg-banana-secondary-blue bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all shadow-lg hover:shadow-xl"
+                  class="bg-gradient-to-r from-[#6209F6] to-[#2574E9] bg-opacity-90 p-2 rounded-full hover:bg-opacity-100 transition-all duration-300 shadow-lg hover:shadow-xl"
                   title="View full size"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -271,7 +271,7 @@
                 </button>
                 <button 
                   @click="handleDownload(work.quality_image)"
-                  class="bg-banana-secondary-blue bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all shadow-lg hover:shadow-xl"
+                  class="bg-gradient-to-r from-[#6209F6] to-[#2574E9] bg-opacity-90 p-2 rounded-full hover:bg-opacity-100 transition-all duration-300 shadow-lg hover:shadow-xl"
                   :disabled="isDownloading"
                   title="Download video"
                 >
@@ -297,7 +297,7 @@
               <div class="absolute top-2 right-2 opacity-0 group-hover:opacity-100 transition-opacity flex gap-2">
                 <button 
                   @click="openImageLightbox(work.quality_image)"
-                  class="bg-banana-secondary-blue bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all shadow-lg hover:shadow-xl"
+                  class="bg-gradient-to-r from-[#6209F6] to-[#2574E9] bg-opacity-90 p-2 rounded-full hover:bg-opacity-100 transition-all duration-300 shadow-lg hover:shadow-xl"
                   title="View full size"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -306,7 +306,7 @@
                 </button>
                 <button 
                   @click="handleDownload(work.quality_image)"
-                  class="bg-banana-secondary-blue bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-all shadow-lg hover:shadow-xl"
+                  class="bg-gradient-to-r from-[#6209F6] to-[#2574E9] bg-opacity-90 p-2 rounded-full hover:bg-opacity-100 transition-all duration-300 shadow-lg hover:shadow-xl"
                   :disabled="isDownloading"
                   title="Download image"
                 >
@@ -328,18 +328,18 @@
                     loading="lazy"
                     alt="Processing image"
                   />
-                  <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-                                      <div class="text-center">
-                    <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-banana-text-muted border-t-banana-primary-yellow mb-2"></div>
-                    <p class="text-white text-sm">Processing...</p>
-                  </div>
+                                    <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+                    <div class="text-center">
+                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-400 border-t-[#6209F6] mb-2"></div>
+                      <p class="text-white text-sm">Processing...</p>
+                    </div>
                   </div>
                 </template>
                 <template v-else>
-                  <div class="w-full h-full bg-banana-card-bg flex items-center justify-center">
+                  <div class="w-full h-full bg-gray-700 flex items-center justify-center">
                     <div class="text-center">
-                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-banana-text-muted border-t-banana-primary-yellow mb-2"></div>
-                      <p class="text-banana-text-light text-sm">Generating...</p>
+                      <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-400 border-t-[#6209F6] mb-2"></div>
+                      <p class="text-gray-800 text-sm">Generating...</p>
                     </div>
                   </div>
                 </template>
@@ -351,7 +351,7 @@
                 <button 
                   v-if="work.prompt"
                   @click="copyPrompt(work.prompt)"
-                  class="text-banana-text-muted hover:text-white transition-colors"
+                  class="text-gray-400 hover:text-white transition-colors"
                   title="Copy prompt"
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -368,30 +368,30 @@
 
       <!-- 空状态 -->
       <div v-else-if="!loading && works.length === 0" class="text-center py-12">
-        <p class="text-banana-text-muted">No works yet</p>
+        <p class="text-gray-300">No works yet</p>
       </div>
 
       <!-- 加载状态 -->
       <div v-if="loading" class="text-center py-8 mt-4">
-        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-banana-text-muted border-t-banana-primary-yellow"></div>
+        <div class="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-400 border-t-[#6209F6]"></div>
       </div>
 
       <!-- 分页控件 -->
       <div v-if="!loading && works.length > 0" class="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
         <!-- 每页显示数量选择器 -->
         <div class="flex items-center gap-2">
-          <span class="text-banana-text-muted text-sm">Show</span>
+          <span class="text-gray-300 text-sm">Show</span>
           <select 
             v-model="pageSize"
             @change="handleWorksPageSizeChange(Number(pageSize))"
-            class="bg-banana-dark-bg text-banana-text-light rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-banana-primary-yellow border border-banana-border-color"
+            class="bg-gray-700 text-gray-200 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-[#6209F6] border border-gray-600"
           >
             <option value="8">8</option>
             <option value="16">16</option>
             <option value="24">24</option>
             <option value="32">32</option>
           </select>
-          <span class="text-banana-text-muted text-sm">entries</span>
+          <span class="text-gray-300 text-sm">entries</span>
         </div>
 
         <!-- 分页按钮 -->
@@ -402,8 +402,8 @@
             class="px-3 py-1.5 rounded-lg text-sm transition-colors border"
             :class="[
               page === 1 
-                ? 'bg-banana-dark-bg text-banana-text-muted cursor-not-allowed border-banana-border-color' 
-                : 'bg-banana-dark-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
+                ? 'bg-gray-600 text-gray-400 cursor-not-allowed border-gray-500' 
+                : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
             ]"
           >
             Previous
@@ -415,11 +415,11 @@
               :key="pageNum"
               @click="handleWorksPageChange(pageNum)"
               class="w-8 h-8 rounded-lg text-sm transition-colors border"
-              :class="[
-                pageNum === page 
-                  ? 'bg-banana-primary-yellow text-banana-dark-bg border-banana-primary-yellow' 
-                  : 'bg-banana-dark-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
-              ]"
+                                :class="[
+                    pageNum === page 
+                      ? 'bg-gradient-to-r from-[#6209F6] to-[#2574E9] text-white border-transparent' 
+                      : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
+                  ]"
             >
               {{ pageNum }}
             </button>
@@ -431,8 +431,8 @@
             class="px-3 py-1.5 rounded-lg text-sm transition-colors border"
             :class="[
               page === totalWorksPages 
-                ? 'bg-banana-dark-bg text-banana-text-muted cursor-not-allowed border-banana-border-color' 
-                : 'bg-banana-dark-bg text-banana-text-light hover:bg-banana-border-color/30 border-banana-border-color'
+                ? 'bg-gray-600 text-gray-400 cursor-not-allowed border-gray-500' 
+                : 'bg-gray-700 text-gray-200 hover:bg-gray-600 border-gray-600'
             ]"
           >
             Next
@@ -463,7 +463,7 @@
           />
           <button 
             @click="closePreview"
-            class="absolute top-4 right-4 text-white bg-banana-secondary-blue p-2 rounded-full hover:opacity-90 transition-colors shadow-lg"
+            class="absolute top-4 right-4 text-white bg-gradient-to-r from-[#6209F6] to-[#2574E9] p-2 rounded-full hover:from-[#5A08E0] hover:to-[#1E63C7] transition-all duration-300 shadow-lg hover:shadow-xl"
           >
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -564,12 +564,12 @@ const isDownloading = ref(false)
 
 // 标签选项卡配置
 const tabs = [
-  // { label: 'My Videos', value: 1 },
-  { label: 'My Images', value: 2 },
+  { label: 'My Videos', value: 1 },
+  // { label: 'My Images', value: 2 },
   { label: 'In Progress', value: 0 }
 ]
 
-const currentTab = ref(2)
+const currentTab = ref(1)
 const task_type = ref(1)
 
 // 添加积分记录相关状态

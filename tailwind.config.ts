@@ -14,15 +14,6 @@ export default {
   theme: {
   	extend: {
   		colors: {
-        banana: {
-          'dark-bg': '#0D1117',
-          'primary-yellow': '#FFD700',
-          'secondary-blue': '#00BFFF',
-          'text-light': '#f0f6fc',
-          'text-muted': '#8b949e',
-          'card-bg': '#161b22',
-          'border-color': '#30363d',
-        },
   			theme: '#1D5FCC',//主题颜色
   			blue: {
 				dark: '#2574E9',          // 主品牌色。用于最重要的按钮、链接和品牌标识。
