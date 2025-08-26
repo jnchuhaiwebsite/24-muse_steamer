@@ -19,7 +19,7 @@ Disallow: /mypay/
 Disallow: /components/
 
 # 声明网站地图
-Sitemap: https://www.nano-banana-ai.net/sitemap.xml
+Sitemap: https://www.musesteamer2.com/sitemap.xml
 
 
 

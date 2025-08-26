@@ -1,84 +1,91 @@
 <template>
-  <div class="min-h-screen bg-banana-dark-bg text-banana-text-light">
-    <main class="w-full mx-auto bg-banana-dark-bg rounded-lg max-w-7xl min-h-screen">
-      <!-- 页面标题区域 -->
+  <div class="min-h-screen" style="background-color: var(--bg-color); color: var(--text-color);">
+    <main class="w-full mx-auto rounded-lg max-w-7xl min-h-screen">
+      <!-- Page Title Area -->
       <section>
         <div class="container mx-auto px-4">
           <PageHero 
             class="mt-20 mb-16"
-            title="Nano Banana AI Pricing"
-            subtitle="Unlock the full power of Nano Banana with a plan that scales with your ambition. No hidden fees, cancel anytime."
+            title="MuseSteamer AI Pricing"
+            subtitle="Unlock the full power of MuseSteamer with a plan that scales with your ambition. No hidden fees, your credits never expire."
           />
         </div>
       </section>
 
-      <!-- 加载状态 -->
+      <!-- Loading State -->
       <section v-if="pending" class="flex justify-center items-center py-20 w-full" aria-live="polite">
         <div
-          class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"
+          class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2"
+          style="border-color: #6209F6;"
           aria-label="Loading pricing plans"
         ></div>
       </section>
 
-      <!-- 定价方案区域 -->
+      <!-- Pricing Plans Section -->
       <section
         v-else
         class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto place-items-stretch"
         aria-label="Pricing plans"
       >
-        <!-- 循环渲染套餐卡片 -->
+        <!-- Loop over plan cards -->
         <article
           v-for="(plan, index) in planData"
           :key="index"
           :class="[
-            'relative bg-banana-card-bg rounded-xl p-6 flex flex-col h-full',
+            'relative rounded-xl p-6 flex flex-col h-full',
             plan.is_popular
-              ? 'border-2 border-banana-primary-yellow shadow-2xl scale-105 z-10'
-              : 'border border-banana-border-color shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300',
+              ? 'border-2 shadow-2xl scale-105 z-10'
+              : 'border shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300',
             plan.price === 0 ? 'hidden md:flex' : 'flex'
           ]"
+          :style="{
+            backgroundColor: 'var(--card-color)',
+            borderColor: plan.is_popular ? '#DC8AF6' : 'var(--border-color)'
+          }"
           :aria-labelledby="`plan-${index}-title`"
         >
-          <!-- 热门标签 -->
+          <!-- Popular Tag -->
           <div
             v-if="plan.is_popular"
-            class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-gradient-to-r from-banana-primary-yellow to-banana-secondary-blue text-banana-dark-bg text-sm font-semibold rounded-full z-20 shadow-lg"
+            class="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-2 text-sm font-semibold rounded-full z-20 shadow-lg"
+            style="background: var(--primary-gradient); color: white;"
             aria-label="Most popular plan"
           >
             ⭐ Most Popular
           </div>
 
-          <!-- 套餐标题 -->
+          <!-- Plan Title -->
           <header class="text-center mb-6">
             <h3 
               :id="`plan-${index}-title`"
-              class="text-2xl font-bold text-banana-text-light mb-3"
+              class="text-2xl font-bold mb-3"
+              style="color: var(--text-color);"
             >
               {{ plan.name }}
             </h3>
-            <p class="text-banana-text-muted text-sm leading-relaxed" v-html="plan.description"></p>
+            <p class="text-sm leading-relaxed" style="color: var(--text-muted-color);" v-html="plan.description"></p>
           </header>
 
-          <!-- 价格信息 -->
+          <!-- Price Info -->
           <div class="mb-6 text-center">
-            <div class="bg-gradient-to-br from-banana-dark-bg to-gray-900 rounded-xl p-6 border border-banana-border-color shadow-sm">
+            <div class="rounded-xl p-6 border shadow-sm" style="background-color: var(--bg-color); border-color: var(--border-color);">
               <div class="inline-flex items-baseline gap-2">
-                <span class="text-4xl font-bold text-banana-primary-yellow">${{ plan.price }}</span>
-                <span v-if="plan.price === 9.9" class="text-xl text-banana-primary-yellow/50 line-through">$12</span>
-                <span v-if="plan.price === 29.9" class="text-xl text-banana-primary-yellow/50 line-through">$33</span>
-                <span v-if="plan.price === 69.9" class="text-xl text-banana-primary-yellow/50 line-through">$74</span>
-                <span class="text-sm text-banana-text-muted font-medium bg-banana-card-bg px-3 py-1 rounded-full shadow-sm">one-time</span>
+                <span class="text-4xl font-bold" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">${{ plan.price }}</span>
+                <span v-if="plan.price === 9.9" class="text-xl line-through" style="color: var(--text-muted-color);">$12</span>
+                <span v-if="plan.price === 29.9" class="text-xl line-through" style="color: var(--text-muted-color);">$33</span>
+                <span v-if="plan.price === 69.9" class="text-xl line-through" style="color: var(--text-muted-color);">$74</span>
+                <span class="text-sm font-medium px-3 py-1 rounded-full shadow-sm" style="background-color: var(--card-color); color: var(--text-muted-color);">one-time</span>
               </div>
             </div>
           </div>
 
-          <!-- 操作按钮 -->
+          <!-- Action Button -->
           <div class="mb-8">
             <button
               @click="plan.code ? handleUpgradePlan(plan) : null"
               :disabled="upgradingPlanId === plan.code"
               :class="[
-                'w-full py-4 px-6 rounded-xl font-semibold text-base flex items-center justify-center transition-all duration-300 transform hover:scale-105',
+                'btn w-full py-4 px-6 text-base',
                 getButtonClass(plan),
               ]"
               :aria-describedby="`plan-${index}-title`"
@@ -88,15 +95,16 @@
             </button>
           </div>
 
-          <!-- 功能特性列表 -->
+          <!-- Features List -->
           <section class="flex-grow" :aria-label="`${plan.name} plan features`">
             <ul class="space-y-4">
               <li
                 v-for="(feature, fIndex) in getPlanFeatures(plan)"
                 :key="fIndex"
-                class="flex items-start text-banana-text-muted"
+                class="flex items-start"
+                style="color: var(--text-muted-color);"
               >
-                <span class="mr-3 text-green-500 font-bold text-lg flex-shrink-0 mt-0.5" aria-hidden="true">✅</span>
+                <span class="mr-3 font-bold text-lg flex-shrink-0 mt-0.5" style="color: #83D0FB;" aria-hidden="true">✓</span>
                 <span class="text-sm leading-relaxed" v-html="feature"></span>
               </li>
             </ul>
@@ -105,15 +113,15 @@
       </section>
 
       <!-- How Credits Work Section -->
-      <section class="mt-20 py-12 bg-banana-card-bg rounded-xl border border-banana-border-color shadow-lg">
+      <section class="mt-20 py-12 rounded-xl border shadow-lg" style="background-color: var(--card-color); border-color: var(--border-color);">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-banana-text-light sm:text-4xl">How Do Credits Work?</h2>
-            <p class="mt-4 text-lg text-banana-text-muted">
-              Credits are the universal currency for creating in Nano Banana AI. Use them for various actions like generating images or accessing advanced features. Your credit balance is deducted based on your usage.
+            <h2 class="text-3xl font-bold sm:text-4xl" style="color: var(--text-color);">How Do Credits Work?</h2>
+            <p class="mt-4 text-lg" style="color: var(--text-muted-color);">
+              Credits are the universal currency for creating in MuseSteamer AI. Use them for various actions like generating images or accessing advanced features. Your credit balance is deducted based on your usage.
             </p>
-            <div class="mt-6 inline-block bg-banana-dark-bg px-4 py-2 rounded-lg border border-banana-border-color">
-              <p class="text-base font-medium text-banana-primary-yellow">Example: 1 Standard Image Generation = 1 Credit.</p>
+            <div class="mt-6 inline-block px-4 py-2 rounded-lg border" style="background-color: var(--bg-color); border-color: var(--border-color);">
+              <p class="text-base font-medium" style="background: var(--primary-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Example: 1 Standard Image Generation = 1 Credit.</p>
             </div>
           </div>
         </div>
@@ -123,15 +131,15 @@
       <section class="mt-16 py-12">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
           <div class="text-center mb-12">
-            <h2 class="text-3xl font-bold text-banana-text-light sm:text-4xl">Frequently Asked Questions</h2>
+            <h2 class="text-3xl font-bold sm:text-4xl" style="color: var(--text-color);">Frequently Asked Questions</h2>
           </div>
           <div class="max-w-7xl mx-auto grid md:grid-cols-2 gap-6">
-            <div v-for="(faq, index) in faqs" :key="index" class="bg-banana-card-bg rounded-lg p-6 border border-banana-border-color transition-all duration-300 hover:border-banana-primary-yellow">
-              <h3 class="font-semibold text-lg text-banana-text-light flex items-start">
-                <span class="text-banana-primary-yellow font-bold mr-3">{{ String(index + 1).padStart(2, '0') }}</span>
+            <div v-for="(faq, index) in faqs" :key="index" class="rounded-lg p-6 border transition-all duration-300" style="background-color: var(--card-color); border-color: var(--border-color);">
+              <h3 class="font-semibold text-lg flex items-start" style="color: var(--text-color);">
+                <span class="font-bold mr-3" style="color: #83D0FB;">{{ String(index + 1).padStart(2, '0') }}</span>
                 <span>{{ faq.question }}</span>
               </h3>
-              <p class="mt-4 text-banana-text-muted pl-8">{{ faq.answer }}</p>
+              <p class="mt-4 pl-8" style="color: var(--text-muted-color);">{{ faq.answer }}</p>
             </div>
           </div>
         </div>
@@ -236,19 +244,16 @@ const getPlanFeatures = (plan: PricingPlan): string[] => {
   return Array.isArray(plan.features) ? plan.features : [];
 };
 
-  // 获取按钮样式
+  // Get button class
 const getButtonClass = (plan: PricingPlan): string => {
-    return "bg-banana-primary-yellow text-banana-dark-bg hover:opacity-90";
-  if (plan.price === 0) {
-    return "bg-banana-border-color text-banana-text-muted cursor-not-allowed";
-  } else if (plan.is_popular) {
-    return "bg-banana-primary-yellow text-banana-dark-bg hover:opacity-90";
+  if (plan.is_popular) {
+    return "btn-primary";
   } else {
-    return "bg-banana-secondary-blue text-white hover:opacity-90";
+    return "btn-secondary"; // Assuming you might have a secondary button style
   }
 };
 
-// 处理升级计划
+// Handle plan upgrade
 const handleUpgradePlan = async (plan: PricingPlan) => {
   // 如果没有登录，则提示登录并触发登录
   if (!isSignedIn.value) {
@@ -278,14 +283,13 @@ const handleUpgradePlan = async (plan: PricingPlan) => {
   }
 };
 </script>
-
-<style scoped>
-.hover-theme:hover {
-  background-color: var(--theme-primary-hover) !important;
-  color: #fff !important;
+<style>
+.btn-secondary {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
 }
-
-.text-theme {
-  color: #ec2657;
+.btn-secondary:hover {
+  border-color: #83D0FB;
 }
 </style> 

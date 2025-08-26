@@ -1,67 +1,74 @@
 <template>
   <div
-    class="py-16 bg-blue-pale"
+    class="py-16"
+    style="background-color: var(--bg-color);"
     aria-labelledby="pricing-heading"
   >
     <div class="max-w-7xl mx-auto px-4">
-      <div class="text-blue-footertext text-center text-lg mb-2 font-medium">
-        Choose Your Plan
-      </div>
+
       <h2
-        class="text-white text-center text-4xl font-bold mb-4 font-medium"
+        class="text-center text-4xl font-bold mb-4"
+        style="color: var(--text-color);"
       >
-        Simple, Transparent Pricing
+        MuseSteamer AI Pricing
       </h2>
-      <p class="text-blue-footertext text-center max-w-2xl mx-auto mb-12">
+      <p class="text-center max-w-2xl mx-auto mb-12" style="color: var(--text-muted-color);">
         Select the plan that best fits your needs, upgrade or downgrade anytime
       </p>
 
-      <!-- 加载状态 -->
+      <!-- Loading State -->
       <div v-if="pending" class="flex justify-center items-center py-20">
         <div
-          class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-purple-500"
+          class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2"
+          style="border-color: #6209F6;"
           aria-label="Loading pricing plans"
         ></div>
       </div>
 
-      <!-- 定价卡片 -->
+      <!-- Pricing Cards -->
       <div
         v-else
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto"
       >
-        <!-- 循环渲染套餐卡片 -->
+        <!-- Loop over plan cards -->
         <article
           v-for="(plan, index) in data"
           :key="index"
           :class="[
-            'bg-gray-800 rounded-xl p-8 flex flex-col',
+            'rounded-xl p-8 flex flex-col',
             plan.is_popular
-              ? 'border-2 border-[#ec2657] shadow-lg relative'
-              : 'border border-gray-700 shadow-sm hover:shadow-md transition-shadow',
+              ? 'border-2 shadow-lg relative'
+              : 'border shadow-sm hover:shadow-md transition-shadow',
             plan.price === 0 ? 'hidden md:flex' : 'flex'
           ]"
+          :style="{ 
+            backgroundColor: 'var(--card-color)', 
+            borderColor: plan.is_popular ? '#DC8AF6' : 'var(--border-color)' 
+          }"
         >
           <div
             v-if="plan.is_popular"
-            class="absolute -top-3 right-6 px-3 py-1 bg-theme text-white text-sm rounded-full"
+            class="absolute -top-3 right-6 px-3 py-1 text-sm rounded-full"
+            style="background: var(--primary-gradient); color: white;"
           >
             Most Popular
           </div>
-          <h3 class="text-2xl font-bold text-white mb-2 font-medium">
+          <h3 class="text-2xl font-bold mb-2" style="color: var(--text-color);">
             {{ plan.name }}
           </h3>
-          <p class="text-gray-400 mb-6">{{ plan.description }}</p>
-          <div class="text-3xl font-bold text-white mb-6">
+          <p class="mb-6" style="color: var(--text-muted-color);">{{ plan.description }}</p>
+          <div class="text-3xl font-bold mb-6" style="color: var(--text-color);">
             ${{ plan.price }}
-            <span class="text-gray-400 text-base font-normal"></span>
+            <span class="text-base font-normal" style="color: var(--text-muted-color);"></span>
           </div>
           <ul class="space-y-3 mb-8" :aria-label="`${plan.name} plan features`">
             <li
               v-for="(feature, fIndex) in getPlanFeatures(plan)"
               :key="fIndex"
-              class="flex items-center text-gray-300"
+              class="flex items-center"
+              style="color: var(--text-muted-color);"
             >
-              <span class="mr-2 text-theme" aria-hidden="true">✓</span>
+              <span class="mr-2" style="color: #83D0FB;" aria-hidden="true">✓</span>
               {{ feature }}
             </li>
           </ul>
@@ -69,12 +76,9 @@
             <button
               @click="plan.code ? handleUpgradePlan(plan) : null"
               :disabled="upgradingPlanId === plan.code"
-              :class="[
-                'w-full py-3 px-4 rounded-lg flex items-center justify-center hover-theme',
-                getButtonClass(plan),
-              ]"
+              :class="['btn w-full py-3', getButtonClass(plan)]"
             >
-              <div v-if="upgradingPlanId === plan.code" class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-white mr-2"></div>
+              <div v-if="upgradingPlanId === plan.code" class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-current mr-2"></div>
               {{ plan.button_text }}
             </button>
           </div>
@@ -123,18 +127,16 @@ const getPlanFeatures = (plan: any): string[] => {
   return Array.isArray(plan.features) ? plan.features : [];
 };
 
-  // 获取按钮样式
+  // Get button class
 const getButtonClass = (plan: any): string => {
-  if (plan.price === 0) {
-    return "bg-gray-100 text-white hover:bg-gray-200";
-  } else if (plan.is_popular) {
-    return "bg-theme text-white hover:bg-theme-hover";
+  if (plan.is_popular) {
+    return "btn-primary";
   } else {
-    return "bg-theme text-white hover:bg-theme-hover";
+    return "btn-secondary";
   }
 };
 
-// 处理升级计划
+// Handle plan upgrade
 const handleUpgradePlan = async (plan: any) => {
   // 如果没有登录，则提示登录并触发登录
   if (!isSignedIn.value) {
@@ -166,8 +168,12 @@ const handleUpgradePlan = async (plan: any) => {
 </script>
 
 <style scoped>
-.hover-theme:hover {
-  background-color: var(--theme-primary-hover) !important;
-  color: #fff !important;
+.btn-secondary {
+  background-color: var(--card-color);
+  color: var(--text-color);
+  border: 1px solid var(--border-color);
+}
+.btn-secondary:hover {
+  border-color: #83D0FB;
 }
 </style> 

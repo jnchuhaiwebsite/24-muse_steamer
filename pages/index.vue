@@ -9,7 +9,7 @@
     <Examples />
     <About />
     <HowItWorks />
-    <Pricing />
+    <!-- <PricingPlans /> -->
     <Faq />
   </div>
 </template>
@@ -20,12 +20,13 @@ import About from '~/components/MuseSteamer/About.vue'
 import Advantages from '~/components/MuseSteamer/Advantages.vue'
 import Examples from '~/components/MuseSteamer/Examples.vue'
 import HowItWorks from '~/components/MuseSteamer/HowItWorks.vue'
-import Pricing from '~/components/MuseSteamer/Pricing.vue'
+// import Pricing from '~/components/MuseSteamer/Pricing.vue'
 import Faq from '~/components/MuseSteamer/Faq.vue'
+import { useSeo } from '~/composables/useSeo';
+import PricingPlans from '~/components/PricingPlans.vue'
 
-useSeoMeta({
-  title: 'MuseSteamer AI | The Ultimate AI Video Generator for Cinematic Content',
-  description: 'Developed by Baidu, MuseSteamer AI transforms your images into stunning videos with cinematic quality, master-level cinematography, and perfectly synchronized dialogue.',
-  keywords: 'Baidu AI, MuseSteamer, AI video generator, text to video, image to video AI, create AI video, cinematic AI, AI for marketing, video creation tool, multimodal AI',
+useSeo({
+  title: 'MuseSteamer AI - Audio Enabled AI Image to Video Generator',
+  description: 'Baidu MuseSteamer AI video generator. Create professional AI videos with cinematic visuals and natural voices in minutes.',
 })
 </script>

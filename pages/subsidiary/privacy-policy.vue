@@ -68,7 +68,7 @@
             <li>Export your data in a machine-readable format.</li>
             <li>Opt out of certain data processing activities.</li>
           </ul>
-          <p class="mt-4">To exercise these rights, please contact our support team at <a href="mailto:support@nano-banana-ai.net" class="text-banana-secondary-blue hover:underline">support@nano-banana-ai.net</a>.</p>
+          <p class="mt-4">To exercise these rights, please contact our support team at <a href="mailto:support@musesteamer2.com" class="text-banana-secondary-blue hover:underline">support@musesteamer2.com</a>.</p>
         </section>
 
         <section>
@@ -88,7 +88,7 @@
 
         <section>
           <h2 class="text-2xl font-bold mb-4 text-banana-primary-yellow">10. Contact Us</h2>
-          <p>If you have any questions or concerns about this Privacy Policy, please do not hesitate to contact us at: <a href="mailto:support@nano-banana-ai.net" class="text-banana-secondary-blue hover:underline">support@nano-banana-ai.net</a></p>
+          <p>If you have any questions or concerns about this Privacy Policy, please do not hesitate to contact us at: <a href="mailto:support@musesteamer2.com" class="text-banana-secondary-blue hover:underline">support@musesteamer2.com</a></p>
         </section>
 
         <section class="mt-12">

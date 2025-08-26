@@ -5,7 +5,7 @@
       <div class="relative user-menu-container">
         <button
           @click="toggleUserMenu"
-          class="relative focus:outline-none px-1.5 py-1.5 rounded-lg hover:bg-banana-card-bg/80 hover:shadow-lg transition-all"
+          class="relative focus:outline-none px-1.5 py-1.5 rounded-lg hover:bg-gray-800 transition-all"
         >
           <img
             :src="userDisplay?.imageUrl || '/default-avatar.png'"
@@ -18,23 +18,26 @@
         <!-- 用户下拉菜单 -->
         <div
           v-if="showUserMenu"
-          class="absolute right-0 mt-2 w-64 bg-banana-dark-bg border border-banana-border-color rounded-lg shadow-lg py-1 z-50"
+          class="absolute right-0 mt-2 w-64 border rounded-lg shadow-lg py-1 z-50"
+          style="background-color: var(--card-color); border-color: var(--border-color);"
         >
-          <div class="px-4 py-3 border-b border-banana-border-color/50">
+          <div class="px-4 py-3 border-b" style="border-color: var(--border-color);">
             <div class="flex items-center gap-3 mb-2">
               <img
                 :src="userDisplay?.imageUrl || '/default-avatar.png'"
                 :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Banana` : 'Default User Avatar - Banana'"
                 loading="lazy"
-                class="w-10 h-10 rounded-full object-cover ring-2 ring-banana-border-color/50"
+                class="w-10 h-10 rounded-full object-cover ring-2"
+                style="ring-color: var(--border-color);"
               />
               <div>
-                <p class="text-banana-text-light text-sm font-medium">
+                <p class="text-sm font-medium" style="color: var(--text-color);">
                   {{ userDisplay?.username }}
                 </p>
                 <p
                   v-if="userDisplay?.email"
-                  class="text-xs text-banana-text-muted truncate max-w-[160px]"
+                  class="text-xs truncate max-w-[160px]"
+                  style="color: var(--text-muted-color);"
                 >
                   {{ userDisplay?.email }}
                 </p>
@@ -43,8 +46,8 @@
 
             <div class="space-y-1 mt-2">
               <div v-if="vipLastTime" class="flex justify-between">
-                <p class="text-xs text-banana-text-muted">VIP expiration time:</p>
-                <p class="text-xs text-banana-text-muted/70">
+                <p class="text-xs" style="color: var(--text-muted-color);">VIP expiration time:</p>
+                <p class="text-xs" style="color: var(--text-muted-color);">
                   {{ vipLastTime }}
                 </p>
               </div>
@@ -52,11 +55,12 @@
           </div>
 
           <!-- 菜单选项 -->
-          <div class="py-1 border-b border-banana-border-color/50">
+          <div class="py-1 border-b" style="border-color: var(--border-color);">
             <!-- 个人中心 -->
             <NuxtLink
               to="/profile"
-              class="block px-4 py-2 text-sm text-banana-text-light hover:bg-banana-card-bg flex items-center transition-all duration-200 hover:translate-x-1"
+              class="block px-4 py-2 text-sm flex items-center transition-all duration-200 hover:translate-x-1"
+              style="color: var(--text-color);"
               @click="showUserMenu = false"
             >
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
@@ -67,7 +71,8 @@
 
             <!-- 我的积分 -->
             <div
-              class="block px-4 py-2 text-sm text-banana-text-light hover:bg-banana-card-bg flex items-center justify-between transition-all duration-200 hover:translate-x-1 cursor-pointer"
+              class="block px-4 py-2 text-sm flex items-center justify-between transition-all duration-200 hover:translate-x-1 cursor-pointer"
+              style="color: var(--text-color);"
             >
               <div class="flex items-center">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 mr-2">
@@ -75,7 +80,7 @@
                 </svg>
                 Credits:
               </div>
-              <span class="text-banana-text-muted">{{ points }}</span>
+              <span style="color: var(--text-muted-color);">{{ points }}</span>
             </div>
           </div>
 
@@ -83,7 +88,8 @@
           <SignOutButton>
             <button
               @click="() => console.log('👆 [UserMenu] PC端退出按钮被点击')"
-              class="block w-full text-left px-4 py-2 text-sm text-banana-text-light hover:bg-banana-card-bg flex items-center transition-all duration-200 hover:translate-x-1 hover:text-banana-primary-yellow"
+              class="block w-full text-left px-4 py-2 text-sm flex items-center transition-all duration-200 hover:translate-x-1"
+              style="color: var(--text-color);"
             >
               <!-- Heroicons: logout/arrow-right-on-rectangle -->
               <svg
@@ -111,7 +117,8 @@
       <SignInButton mode="modal">
         <button id="bindLogin"
           :disabled="isAuthLoading"
-          class="px-4 py-2 rounded-lg bg-banana-primary-yellow text-banana-dark-bg hover:opacity-90 transition-all text-sm font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
+          class="px-4 py-2 rounded-lg text-white hover:opacity-90 transition-all text-sm font-medium disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-md hover:shadow-lg"
+          style="background: var(--primary-gradient);"
         >
           {{ isAuthLoading ? 'Loading...' : 'Log in / Sign up' }}
         </button>
@@ -121,21 +128,23 @@
 
   <!-- 移动端用户菜单（在导航滑出菜单内）-->
   <template v-if="isMobile">
-    <div v-if="isSignedIn" class="pt-4 border-t border-banana-border-color/50">
+    <div v-if="isSignedIn" class="pt-4 border-t" style="border-color: var(--border-color);">
       <div class="flex items-center gap-3 mb-3">
         <img
           :src="userDisplay?.imageUrl || '/default-avatar.png'"
           :alt="userDisplay?.username ? `${userDisplay.username}'s Profile Picture - Banana` : 'Default User Avatar - Banana'"
           loading="lazy"
-          class="w-12 h-12 rounded-full object-cover ring-2 ring-banana-border-color/50 flex-shrink-0"
+          class="w-12 h-12 rounded-full object-cover ring-2 flex-shrink-0"
+          style="ring-color: var(--border-color);"
         />
         <div class="flex-1 min-w-0">
-          <p class="text-banana-text-light font-medium text-base truncate">
+          <p class="font-medium text-base truncate" style="color: var(--text-color);">
             {{ userDisplay?.username }}
           </p>
           <p
             v-if="userDisplay?.email"
-            class="text-xs text-banana-text-muted truncate mt-0.5"
+            class="text-xs truncate mt-0.5"
+            style="color: var(--text-muted-color);"
           >
             {{ userDisplay?.email }}
           </p>
@@ -156,27 +165,28 @@
         <NuxtLink
           to="/profile"
           @click="props.onCloseMobileNav?.()"
-          class="block w-full py-3 px-4 rounded-xl bg-banana-card-bg hover:bg-banana-card-bg/80 active:scale-[0.98] transition-all duration-200 text-sm font-medium text-banana-text-light flex items-center gap-3 shadow-sm border border-banana-border-color/50"
+          class="block w-full py-3 px-4 rounded-xl active:scale-[0.98] transition-all duration-200 text-sm font-medium flex items-center gap-3 shadow-sm border"
+          style="background-color: var(--card-color); border-color: var(--border-color); color: var(--text-color);"
         >
-          <div class="w-8 h-8 rounded-full bg-banana-border-color/50 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-banana-secondary-blue">
+          <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--border-color);">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="color: #83D0FB;">
               <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z" />
             </svg>
           </div>
-          <span class="text-banana-text-light">Personal Center</span>
+          <span>Personal Center</span>
         </NuxtLink>
 
         <!-- 我的积分 -->
-        <div class="w-full py-3 px-4 rounded-xl bg-banana-card-bg border border-banana-border-color/50 text-sm font-medium text-banana-text-light flex items-center justify-between shadow-sm">
+        <div class="w-full py-3 px-4 rounded-xl border text-sm font-medium flex items-center justify-between shadow-sm" style="background-color: var(--card-color); border-color: var(--border-color); color: var(--text-color);">
           <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-banana-border-color/50 flex items-center justify-center">
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4 text-banana-primary-yellow">
+            <div class="w-8 h-8 rounded-full flex items-center justify-center" style="background-color: var(--border-color);">
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4" style="color: #83D0FB;">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.171-.879-1.171-2.303 0-3.182C10.536 7.719 11.768 7.5 12 7.5c.725 0 1.45.22 2.003.659" />
               </svg>
             </div>
-            <span class="text-banana-text-light">Credits:</span>
+            <span>Credits:</span>
           </div>
-          <span class="text-banana-primary-yellow font-semibold bg-banana-card-bg px-2 py-1 rounded-lg text-xs">{{ points }}</span>
+          <span class="font-semibold px-2 py-1 rounded-lg text-xs" style="color: #83D0FB; background-color: var(--card-color);">{{ points }}</span>
         </div>
       </div>
 
@@ -184,7 +194,9 @@
       <SignOutButton>
         <button
           @click="() => console.log('👆 [UserMenu] 移动端退出按钮被点击')"
-          class="mt-6 w-full py-3 px-4 flex items-center justify-center gap-3 rounded-xl bg-banana-card-bg hover:bg-banana-card-bg/80 active:scale-[0.98] transition-all duration-200 text-sm font-medium text-red-500 border border-banana-border-color/50 shadow-sm">
+          class="mt-6 w-full py-3 px-4 flex items-center justify-center gap-3 rounded-xl active:scale-[0.98] transition-all duration-200 text-sm font-medium text-red-500 border shadow-sm"
+          style="background-color: var(--card-color); border-color: var(--border-color);"
+        >
           <div class="w-8 h-8 rounded-full bg-red-500/10 flex items-center justify-center">
             <!-- Heroicons: logout/arrow-right-on-rectangle -->
             <svg
@@ -211,7 +223,8 @@
     <SignInButton v-else mode="modal">
       <button id="bindLogin"
         :disabled="isAuthLoading"
-        class="mt-6 w-full py-4 rounded-xl bg-gradient-to-r from-banana-primary-yellow to-banana-secondary-blue hover:opacity-90 active:scale-[0.98] text-banana-dark-bg transition-all text-base font-semibold disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl border border-banana-border-color/20"
+        class="mt-6 w-full py-4 rounded-xl text-white hover:opacity-90 active:scale-[0.98] transition-all text-base font-semibold disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center shadow-lg hover:shadow-xl border"
+        style="background: var(--primary-gradient); border-color: rgba(255, 255, 255, 0.2);"
       >
         <div v-if="!isAuthLoading" class="flex items-center gap-2">
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">

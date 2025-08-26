@@ -325,7 +325,7 @@ onMounted(() => {
     "@type": "Blog",
           name: "Midjourney Video Generator Blog",
     description: "Professional AI image generation and animation technology tutorials and insights",
-    url: "https://www.nano-banana-ai.net/blog",
+    url: "https://www.musesteamer2.com/blog",
     publisher: {
       "@type": "Organization",
       name: "Midjourney Video Generator",

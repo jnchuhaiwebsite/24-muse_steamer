@@ -81,7 +81,7 @@
 
         <section>
           <h2 class="text-2xl font-bold mb-4 text-banana-primary-yellow">10. Contact Information</h2>
-          <p>For any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@nano-banana-ai.net" class="text-banana-secondary-blue hover:underline">support@nano-banana-ai.net</a></p>
+          <p>For any questions or concerns regarding these Terms of Service, please contact us at: <a href="mailto:support@musesteamer2.com" class="text-banana-secondary-blue hover:underline">support@musesteamer2.com</a></p>
         </section>
 
         <section class="mt-12">

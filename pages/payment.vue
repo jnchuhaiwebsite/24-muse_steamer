@@ -1,16 +1,16 @@
 <template>
-  <div class="min-h-screen bg-banana-dark-bg flex items-center justify-center px-4 pt-12 pb-4">
+  <div class="min-h-screen flex items-center justify-center px-4 pt-12 pb-4" style="background-color: var(--bg-color);">
     <!-- Loading Dots -->
     <div v-if="isLoading" class="flex space-x-3">
-      <div class="w-3 h-3 bg-banana-secondary-blue rounded-full animate-bounce-1 opacity-75"></div>
-      <div class="w-3 h-3 bg-banana-secondary-blue rounded-full animate-bounce-2 opacity-75"></div>
-      <div class="w-3 h-3 bg-banana-secondary-blue rounded-full animate-bounce-3 opacity-75"></div>
+      <div class="w-3 h-3 rounded-full animate-bounce-1 opacity-75" style="background-color: #83D0FB;"></div>
+      <div class="w-3 h-3 rounded-full animate-bounce-2 opacity-75" style="background-color: #83D0FB;"></div>
+      <div class="w-3 h-3 rounded-full animate-bounce-3 opacity-75" style="background-color: #83D0FB;"></div>
     </div>
 
     <!-- Content -->
-    <div v-else-if="paymentStatus" class="w-full max-w-2xl bg-banana-card-bg rounded-2xl md:p-8 p-4 text-center shadow-lg border border-banana-border-color">
+    <div v-else-if="paymentStatus" class="w-full max-w-2xl rounded-2xl md:p-8 p-4 text-center shadow-lg border" style="background-color: var(--card-color); border-color: var(--border-color);">
       <div class="max-w-xl mx-auto">
-        <!-- 图标 -->
+        <!-- Icon -->
         <div
           :class="[
             'mx-auto w-12 h-12 md:w-16 md:h-16 rounded-full flex items-center justify-center mb-3 md:mb-6',
@@ -26,54 +26,55 @@
         </div>
         
         <!-- Title and Description -->
-        <h1 class="text-xl md:text-3xl font-bold text-banana-text-light mb-2 md:mb-4">
+        <h1 class="text-xl md:text-3xl font-bold mb-2 md:mb-4" style="color: var(--text-color);">
           {{ paymentStatus === 'success' ? 'Payment Successful!' : 'Payment not successful' }}
         </h1>
-        <p class="text-sm md:text-lg text-banana-text-muted mb-4 md:mb-8">
+        <p class="text-sm md:text-lg mb-4 md:mb-8" style="color: var(--text-muted-color);">
           {{ paymentStatus === 'success' 
             ? 'Thank you for your support! Your membership benefits are now activated.'
             : 'Payment was not successful. Please return to the home page and place your order again.' }}
         </p>
 
         <!-- Plan Information (Only show on success) -->
-        <div v-if="paymentStatus === 'success' && planInfo" class="md:w-full mx-auto bg-banana-dark-bg rounded-xl p-4 md:p-8 mb-4 md:mb-8 border border-banana-border-color">
+        <div v-if="paymentStatus === 'success' && planInfo" class="md:w-full mx-auto rounded-xl p-4 md:p-8 mb-4 md:mb-8 border" style="background-color: var(--bg-color); border-color: var(--border-color);">
           <div class="grid md:grid-cols-2 gap-4 md:gap-8">
             <!-- Plan Details -->
             <div class="text-left">
-              <h2 class="text-base md:text-xl font-semibold text-banana-text-light mb-3 md:mb-6">Plan Details</h2>
+              <h2 class="text-base md:text-xl font-semibold mb-3 md:mb-6" style="color: var(--text-color);">Plan Details</h2>
               <!-- Mobile: Single line display -->
               <div class="flex justify-between items-center md:hidden">
                 <div class="flex flex-col">
-                  <span class="text-sm text-banana-text-muted">Plan Name</span>
-                  <span class="text-md text-banana-text-light font-medium">{{ planInfo.name }}</span>
+                  <span class="text-sm" style="color: var(--text-muted-color);">Plan Name</span>
+                  <span class="text-md font-medium" style="color: var(--text-color);">{{ planInfo.name }}</span>
                 </div>
                 <div class="flex flex-col text-right">
-                  <span class="text-sm text-banana-text-muted">Price</span>
-                  <span class="text-md text-banana-text-light font-medium">${{ planInfo.price }}</span>
+                  <span class="text-sm" style="color: var(--text-muted-color);">Price</span>
+                  <span class="text-md font-medium" style="color: var(--text-color);">${{ planInfo.price }}</span>
                 </div>
               </div>
               <!-- Desktop: Stacked display -->
               <div class="hidden md:block space-y-4">
                 <div class="flex flex-col">
-                  <span class="text-banana-text-muted mb-1">Plan Name</span>
-                  <span class="text-lg text-banana-text-light font-medium">{{ planInfo.name }}</span>
+                  <span class="mb-1" style="color: var(--text-muted-color);">Plan Name</span>
+                  <span class="text-lg font-medium" style="color: var(--text-color);">{{ planInfo.name }}</span>
                 </div>
                 <div class="flex flex-col">
-                  <span class="text-banana-text-muted mb-1">Price</span>
-                  <span class="text-lg text-banana-text-light font-medium">${{ planInfo.price }}</span>
+                  <span class="mb-1" style="color: var(--text-muted-color);">Price</span>
+                  <span class="text-lg font-medium" style="color: var(--text-color);">${{ planInfo.price }}</span>
                 </div>
               </div>
             </div>
             
             <!-- Plan Benefits -->
             <div class="text-left mt-4 md:mt-0">
-              <h2 class="text-base md:text-xl font-semibold text-banana-text-light mb-3 md:mb-6">Plan Benefits</h2>
+              <h2 class="text-base md:text-xl font-semibold mb-3 md:mb-6" style="color: var(--text-color);">Plan Benefits</h2>
               <ul class="space-y-2 md:space-y-3">
                 <li v-for="(feature, index) in getPlanFeatures(planInfo)" 
                     :key="index" 
-                    class="flex items-start text-banana-text-light">
-                  <span class="mr-2 md:mr-3 flex-shrink-0 w-4 h-4 md:w-5 md:h-5 bg-banana-secondary-blue/20 rounded-full flex items-center justify-center mt-0.5">
-                    <span class="text-banana-secondary-blue text-xs md:text-sm">✓</span>
+                    class="flex items-start"
+                    style="color: var(--text-color);">
+                  <span class="mr-2 md:mr-3 flex-shrink-0 w-4 h-4 md:w-5 md:h-5 rounded-full flex items-center justify-center mt-0.5" style="background-color: rgba(131, 208, 251, 0.2);">
+                    <span class="text-xs md:text-sm" style="color: #83D0FB;">✓</span>
                   </span>
                   <span class="text-sm md:text-base">{{ feature }}</span>
                 </li>
@@ -85,7 +86,7 @@
         <!-- Back to Home Button -->
         <NuxtLink 
           to="/" 
-          class="inline-block bg-banana-primary-yellow text-banana-dark-bg font-medium px-5 py-2 md:px-8 md:py-3 rounded-lg hover:bg-yellow-400 transition-colors text-sm md:text-lg">
+          class="btn btn-primary inline-block font-medium px-5 py-2 md:px-8 md:py-3 text-sm md:text-lg">
           Back to Home
         </NuxtLink>
       </div>
