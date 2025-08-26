@@ -13,7 +13,7 @@
         MuseSteamer AI Pricing
       </h2>
       <p class="text-center max-w-2xl mx-auto mb-12" style="color: var(--text-muted-color);">
-        Select the plan that best fits your needs, upgrade or downgrade anytime
+        Discover MuseSteamer AI pricing for Turbo, Pro, Lite and Audio editions. Flexible plans for cinematic AI video creation with sound.
       </p>
 
       <!-- Loading State -->
