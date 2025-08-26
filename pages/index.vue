@@ -4,11 +4,12 @@
     <!-- <div class="container text-center">
       <a href="#" class="btn btn-primary">Start Creating Your First Video &rarr;</a>
     </div> -->
-
+    <HowItWorks />
+    <About />
     <Advantages />
     <Examples />
-    <About />
-    <HowItWorks />
+
+
     <!-- <PricingPlans /> -->
     <Faq />
   </div>
