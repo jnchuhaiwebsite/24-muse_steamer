@@ -3,31 +3,9 @@
 
   <url>
     <loc>https://www.musesteamer2.com</loc>
-    <lastmod>2025-08-19T12:00:00.000Z</lastmod>
+    <lastmod>2025-08-26T12:00:00.000Z</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
 
-  
-  <url>
-    <loc>https://www.musesteamer2.com/pricing</loc>
-    <lastmod>2025-08-19T12:00:00.000Z</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
-
-  <url>
-    <loc>https://www.musesteamer2.com/subsidiary/terms-of-service</loc>
-    <lastmod>2025-08-19T12:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
-  <url>
-    <loc>https://www.musesteamer2.com/subsidiary/privacy-policy</loc>
-    <lastmod>2025-08-19T12:00:00.000Z</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  
 </urlset>
