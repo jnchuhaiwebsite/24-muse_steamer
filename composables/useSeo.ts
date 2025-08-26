@@ -50,7 +50,7 @@ export function useSeo(options: SeoOptions = {} as SeoOptions) {
       },
       { property: 'og:type', content: options.ogType || 'website' },
       { property: 'og:url', content: fullUrlWithoutSlash },
-      { property: 'og:image', content: options.ogImage || `${baseUrl}/nanobanana.webp` },
+      { property: 'og:image', content: options.ogImage || `${baseUrl}/MuseSteamer-AI.webp` },
       { property: 'og:site_name', content: 'Nano Banana' },
       ...(options.other || []),
 
@@ -64,7 +64,7 @@ export function useSeo(options: SeoOptions = {} as SeoOptions) {
         name: 'twitter:description',
         content: options.twitterDescription || description,
       },
-      { name: 'twitter:image', content: options.twitterImage || `${baseUrl}/nanobanana.webp` },
+      { name: 'twitter:image', content: options.twitterImage || `${baseUrl}/MuseSteamer-AI.webp` },
     ],
     link: [{ rel: 'canonical', href: fullUrlWithoutSlash }],
   })
