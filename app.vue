@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div style="background-color: var(--bg-color);">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
