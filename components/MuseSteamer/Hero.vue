@@ -648,10 +648,10 @@ const handleVideoRequest = async () => {
 // 检查任务状态
 const checkTaskStatus = async (taskId: string) => {
     try {
-        const response = await checkTask(taskId);
+        const response = await checkTask(taskId) as any;
         if (response.code === 200) {
             const taskData = response.data;
-            if (taskData.status === '1' && taskData.url) {
+            if (taskData.status == 1 && taskData.url) {
                 // 任务成功
                 if (generatedVideoUrl.value) {
                     URL.revokeObjectURL(generatedVideoUrl.value);
@@ -660,9 +660,10 @@ const checkTaskStatus = async (taskId: string) => {
                 progress.value = 100;
                 stopProgressAnimation();
                 stopCheckTask();
+                videoTaskStore.clearTask();
                 $toast.success('Video generated successfully!');
 
-            } else if (taskData.status === '-1' || taskData.status === '-2') {
+            } else if (taskData.status < 0) { // 通常-1表示失败
                 // 任务失败
                 throw new Error(taskData.status_msg || 'Video generation failed');
             }
