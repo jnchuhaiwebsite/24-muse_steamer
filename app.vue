@@ -34,7 +34,9 @@ onMounted(() => {
   
   /* 背景和边框 */
   --bg-primary: #0d1117;
-  --bg-secondary: #0d1117;
+  --bg-secondary: #e6e2de;
+
+  --bg-color: #0d1117;
 }
 
 /* 主题色相关的通用类 */
