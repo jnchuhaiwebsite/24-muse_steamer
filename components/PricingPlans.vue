@@ -3,6 +3,7 @@
     class="py-16"
     style="background-color: var(--bg-color);"
     aria-labelledby="pricing-heading"
+    id="pricing"
   >
     <div class="max-w-7xl mx-auto px-4">
 

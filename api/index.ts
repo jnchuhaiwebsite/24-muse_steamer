@@ -41,7 +41,6 @@ export const urlList = {
  */
 export const setUserInfo = async (data: any) => {
   try {
-    alert(2222)
     // 如果已有有效Token，直接返回缓存的用户信息
     const token = getValidToken();
     if (token) {
@@ -171,7 +170,7 @@ export const createTaskTextVideo = async (data: any) => {
  * @returns 套餐列表
  */
 export const getSubPlans = async () => {
-  return apiRequest(urlList.getSubPlans, 'GET', undefined, false);
+  return apiRequest(urlList.getSubPlans+'?type=1', 'GET', undefined, false);
 }
 /**
  * 获取套餐信息-测试
