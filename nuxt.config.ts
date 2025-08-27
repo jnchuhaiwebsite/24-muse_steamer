@@ -160,9 +160,5 @@ export default defineNuxtConfig({
     // 启用vite特性兼容
     viteNode: true
   },
-  colorMode: {
-    classSuffix: '',
-    preference: 'dark',
-    fallback: 'dark',
-  },
+
 })

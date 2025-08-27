@@ -33,8 +33,8 @@ onMounted(() => {
   --text-secondary: #f3a943;
   
   /* 背景和边框 */
-  --bg-primary: #F5F7FA;
-  --bg-secondary: #e6e2de;
+  --bg-primary: #0d1117;
+  --bg-secondary: #0d1117;
 }
 
 /* 主题色相关的通用类 */
