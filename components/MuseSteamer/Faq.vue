@@ -1,5 +1,5 @@
 <template>
-  <section id="faq" style="background-color: var(--card-color);">
+  <section id="faq" style="background-color: var(--bg-color);">
             <div class="container">
                 <div class="section-header"><h2 class="gradient-text">Frequently Asked Questions</h2></div>
                 <div class="faq-container">
