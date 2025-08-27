@@ -170,9 +170,9 @@
                                         <div class="rounded-2xl p-1 text-center border-2 border-dashed border-slate-600/70 bg-gray-800/80
                       transition-all duration-300 shadow-sm
                       group-hover:shadow-md group-hover:border-[#6209F6]" :class="selectedDuration === duration.value
-                                                ? 'border-solid border-[#6209F6] text-white ring-1 ring-[#6209F6]/40'
+                                                ? 'border-solid border-transparent text-white bg-gradient-to-r from-[#6209F6]/80 via-[#6209F6]/80 to-[#6209F6]/80 '
                                                 : 'text-slate-400 hover:border-[#6209F6]'">
-                                            <div class="font-semibold text-lg">{{ duration.value }}s</div>
+                                            <div class="font-semibold text-lg ">{{ duration.value }}s</div>
                                         </div>
                                     </label>
                                 </div>
@@ -635,7 +635,7 @@ const handleVideoRequest = async () => {
             const taskId = (response.data as { task_id: string }).task_id;
             checkTaskInterval = setInterval(() => {
                 checkTaskStatus(taskId);
-            }, 3000); // 每3秒检查一次
+            }, 5000); // 每5秒检查一次
         }
 
     } catch (error: any) {
@@ -660,7 +660,7 @@ const checkTaskStatus = async (taskId: string) => {
                 progress.value = 100;
                 stopProgressAnimation();
                 stopCheckTask();
-                videoTaskStore.clearTask();
+                // videoTaskStore.clearTask();
                 $toast.success('Video generated successfully!');
 
             } else if (taskData.status < 0) { // 通常-1表示失败
