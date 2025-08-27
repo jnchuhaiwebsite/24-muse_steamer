@@ -68,7 +68,13 @@ export default defineNuxtConfig({
     preset: 'cloudflare_pages',
     cloudflare: {
       deployConfig: true,
-      nodeCompat: true
+      nodeCompat: true,
+      //       wrangler:{
+      //   vars:{
+      //     NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY:process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+      //     NUXT_CLERK_SECRET_KEY:process.env.NUXT_CLERK_SECRET_KEY
+      //   }
+      // }
     },
     devProxy: {
       '/nuxtRequest': {
@@ -160,9 +166,5 @@ export default defineNuxtConfig({
     // 启用vite特性兼容
     viteNode: true
   },
-  colorMode: {
-    classSuffix: '',
-    preference: 'dark',
-    fallback: 'dark',
-  },
+
 })

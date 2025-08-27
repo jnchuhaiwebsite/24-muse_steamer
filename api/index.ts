@@ -15,13 +15,11 @@ const baseUrl = process.env.NODE_ENV === 'development'
 export const urlList = {
   setUserInfo: baseUrl + '/api/user/auth',        // 设置用户信息
   getCurrentUser: baseUrl + '/api/user/info',   // 获取当前用户信息
-  createTasksImgVideo: baseUrl + '/api/task/mj/make_video',     // 创建任务-图生视频
-  createTasksTextVideo: baseUrl + '/api/task/mj/make_video',     // 创建任务-文生视频
   getSubPlans: baseUrl + '/api/website/priceList',     // 获取套餐信息
   getSubplansTest: baseUrl + '/api/website/odl',     // 获取测试套餐信息
   payOrder: baseUrl + '/api/pay/stripe',  // 支付
   opusList: baseUrl + '/api/user/opus_list', // 获取用户作品列表
-  checkTask: baseUrl + '/api/task/mj/check_task_status', // 检查任务
+
   friendLinkList: baseUrl + '/api/cms/friendLinkList', // 获取友情链接列表
   getScore: baseUrl + '/api/mj/score', // 获取积分
   getUserOpus: baseUrl + '/api/mj/show', // 查询用户作品展示列表
@@ -31,10 +29,9 @@ export const urlList = {
   loginAuth: baseUrl + '/api/user/auth1', // 登录认证
   blogCategoryList: baseUrl + '/api/cms/blogCategoryList', // 获取博客分类列表
   blogList: baseUrl + '/api/cms/blogList', // 获取博客列表
-  createTasksText: baseUrl + '/api/task/mj/create',  // 创建任务-文生图
-  createTasks: baseUrl + '/api/task/mj/create',  // 创建任务
 
-  editImage: baseUrl + '/api/task/nano/editimg', // 编辑图片
+  createTasksVideo: baseUrl + '/api/task/steamer/create', // 创建任务-视频
+  checkTask: baseUrl + '/api/task/steamer/check_task_status', // 检查任务
 }
 
 /**
@@ -44,7 +41,6 @@ export const urlList = {
  */
 export const setUserInfo = async (data: any) => {
   try {
-    alert(1222)
     // 如果已有有效Token，直接返回缓存的用户信息
     const token = getValidToken();
     if (token) {
@@ -153,17 +149,16 @@ export const createTasks = async (data: any) => {
 }
 
 /**
- * 创建任务-文生视频
+ * 创建任务-生成视频
  * @param prompt - 描述-必填
- * @param resolution - 分辨率-必填
- * @param ratio - 比例-必填
+ * @param image_url - 图片上传
+ * @param model - 模型-必填
  * @param duration - 时长-必填
- * @param is_show - 是否显示-必填
  * @returns {Object} - 返回任务结果
  */
 export const createTaskTextVideo = async (data: any) => {
   try {
-    return await apiRequest(urlList.createTasksTextVideo, 'POST', data, true);
+    return await apiRequest(urlList.createTasksVideo, 'POST', data, true);
   } catch (error) {
     console.error('创建任务失败:', error);
     throw error;
@@ -175,7 +170,7 @@ export const createTaskTextVideo = async (data: any) => {
  * @returns 套餐列表
  */
 export const getSubPlans = async () => {
-  return apiRequest(urlList.getSubPlans, 'GET', undefined, false);
+  return apiRequest(urlList.getSubPlans+'?type=1', 'GET', undefined, false);
 }
 /**
  * 获取套餐信息-测试

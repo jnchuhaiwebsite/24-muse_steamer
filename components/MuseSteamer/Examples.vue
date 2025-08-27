@@ -1,5 +1,5 @@
 <template>
-  <section id="live-examples">
+  <section id="live-examples" style="background-color: var(--bg-color);">
             <div class="container">
                 <div class="section-header">
                     <h2 class="gradient-text">MuseSteamer AI Showcase</h2>

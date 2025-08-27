@@ -10,7 +10,7 @@
     <Examples />
 
 
-    <!-- <PricingPlans /> -->
+    <PricingPlans />
     <Faq />
   </div>
 </template>

@@ -3,6 +3,7 @@
     class="py-16"
     style="background-color: var(--bg-color);"
     aria-labelledby="pricing-heading"
+    id="pricing"
   >
     <div class="max-w-7xl mx-auto px-4">
 
@@ -57,11 +58,18 @@
             {{ plan.name }}
           </h3>
           <p class="mb-6" style="color: var(--text-muted-color);">{{ plan.description }}</p>
-          <div class="text-3xl font-bold mb-6" style="color: var(--text-color);">
-            ${{ plan.price }}
-            <span class="text-base font-normal" style="color: var(--text-muted-color);"></span>
+          <div class="mb-6 text-center">
+            <div class="bg-gradient-to-br from-banana-dark-bg to-gray-900 rounded-xl p-6 border border-white/10 shadow-sm">
+              <div class="inline-flex items-baseline gap-2">
+                <span class="text-4xl font-bold text-banana-primary-yellow">${{ plan.price }}</span>
+                <span v-if="plan.price === 10" class="text-xl text-[#DC8AF6]/50 line-through">$12</span>
+                <span v-if="plan.price === 30" class="text-xl text-[#DC8AF6]/50 line-through">$33</span>
+                <span v-if="plan.price === 99" class="text-xl text-[#DC8AF6]/50 line-through">$129</span>
+                <span class="text-sm text-white/50 font-medium bg-gray-800/80 px-3 py-1 rounded-full shadow-sm">one-time</span>
+              </div>
+            </div>
           </div>
-          <ul class="space-y-3 mb-8" :aria-label="`${plan.name} plan features`">
+          <!-- <ul class="space-y-3 mb-8" :aria-label="`${plan.name} plan features`">
             <li
               v-for="(feature, fIndex) in getPlanFeatures(plan)"
               :key="fIndex"
@@ -71,7 +79,7 @@
               <span class="mr-2" style="color: #83D0FB;" aria-hidden="true">✓</span>
               {{ feature }}
             </li>
-          </ul>
+          </ul> -->
           <div class="mt-auto">
             <button
               @click="plan.code ? handleUpgradePlan(plan) : null"

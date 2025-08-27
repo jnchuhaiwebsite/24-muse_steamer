@@ -12,7 +12,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <div style="background-color: var(--bg-color);">
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
@@ -33,8 +33,10 @@ onMounted(() => {
   --text-secondary: #f3a943;
   
   /* 背景和边框 */
-  --bg-primary: #F5F7FA;
+  --bg-primary: #0d1117;
   --bg-secondary: #e6e2de;
+
+  --bg-color: #0d1117;
 }
 
 /* 主题色相关的通用类 */
