@@ -370,14 +370,14 @@ const models = [
         defaultDuration: 5,
         costs: { 5: 40 }
     },
-    // {
-    //     id: 'musesteamer-2.0-pro-i2v',
-    //     name: 'MuseSteamer AI 2.0 Pro',
-    //     description: 'Precise response, ultra-high definition quality.',
-    //     durations: [5],
-    //     defaultDuration: 5,
-    //     costs: { 5: 70 }
-    // },
+    {
+        id: 'musesteamer-2.0-pro-i2v',
+        name: 'MuseSteamer AI 2.0 Pro',
+        description: 'Precise response, ultra-high definition quality.',
+        durations: [5],
+        defaultDuration: 5,
+        costs: { 5: 70 }
+    },
     {
         id: 'musesteamer-2.0-lite-i2v',
         name: 'MuseSteamer AI 2.0 Lite',
