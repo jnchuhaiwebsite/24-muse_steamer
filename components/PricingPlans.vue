@@ -11,10 +11,10 @@
         class="text-center text-4xl font-bold mb-4"
         style="color: var(--text-color);"
       >
-        MuseSteamer AI Pricing
+        MuseSteamer AI Video Pricing
       </h2>
       <p class="text-center max-w-2xl mx-auto mb-12" style="color: var(--text-muted-color);">
-        Discover MuseSteamer AI pricing for Turbo, Pro, Lite and Audio editions. Flexible plans for cinematic AI video creation with sound.
+        Discover MuseSteamer AI pricing for Turbo, Pro, Lite and Audio editions. Flexible plans for cinematic AI video creation with sound from MuseSteamer. Get your MuseSteamer AI Video plan today.
       </p>
 
       <!-- Loading State -->

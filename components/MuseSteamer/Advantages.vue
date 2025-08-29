@@ -2,10 +2,10 @@
     <section id="features" style="background-color: var(--card-color);">
         <div class="container">
             <div class="section-header">
-                <h2 class="gradient-text">MuseSteamer AI Features - Audio-Video Integrated Generation
+                <h2 class="gradient-text">MuseSteamer AI Video Features - Audio-Video Integrated Generation with MuseSteamer
                 </h2>
-                <p>Explore MuseSteamer AI core functions with cinematic quality visuals, professional voice and natural
-                    emotional expression to produce high-quality AI videos.
+                <p>Explore MuseSteamer AI core functions. With MuseSteamer, get cinematic quality visuals, professional voice and natural
+                    emotional expression to produce high-quality AI videos with MuseSteamer AI Video.
                 </p>
             </div>
             <div class="grid grid-3">
@@ -18,8 +18,8 @@
                             </svg></div>
                         <h3>Deep Linguistic Adaptation</h3>
                     </div>
-                    <p>Deeply trained on vast linguistic corpora, our AI delivers highly authentic vocal details and
-                        natural emotional expression, especially in nuanced languages like Mandarin.</p>
+                    <p>Deeply trained on vast linguistic corpora, our MuseSteamer AI delivers highly authentic vocal details and
+                        natural emotional expression, especially in nuanced languages like Mandarin. A core feature of MuseSteamer.</p>
                 </article>
                 <article class="card">
                     <div class="flex items-center gap-4 mb-2">
@@ -30,8 +30,8 @@
                             </svg></div>
                         <h3>Cinematic & Realistic Characters</h3>
                     </div>
-                    <p>Using end-to-end generation with dual-attention fusion of audio and video, our AI creates
-                        characters with hyper-natural posture, predictive emotions, and 3D facial geometry.</p>
+                    <p>Using end-to-end generation with dual-attention fusion of audio and video, our MuseSteamer AI creates
+                        characters with hyper-natural posture, predictive emotions, and 3D facial geometry for your MuseSteamer AI Video.</p>
                 </article>
                 <article class="card">
                     <div class="flex items-center gap-4 mb-2">
@@ -42,8 +42,8 @@
                             </svg></div>
                         <h3>Masterful-Controllable-Cinematography</h3>
                     </div>
-                    <p>Fine-tuned on millions of professional shots and enhanced with reinforcement learning, our AI
-                        perfectly aligns visual details with your text, ensuring extreme instruction-following.</p>
+                    <p>Fine-tuned on millions of professional shots and enhanced with reinforcement learning, our MuseSteamer AI
+                        perfectly aligns visual details with your text, ensuring extreme instruction-following for every MuseSteamer AI Video production.</p>
                 </article>
                 <article class="card">
                     <div class="flex items-center gap-4 mb-2">
@@ -52,10 +52,10 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M9 12.75l3 3m0 0l3-3m-3 3v-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg></div>
-                        <h3>All-in-One Audio-Visual Generation</h3>
+                        <h3>All-in-One MuseSteamer AI Video Generation</h3>
                     </div>
-                    <p>Transform a complex production pipeline into a one-click action. Generate visuals, ambient sound,
-                        and multi-person dialogue simultaneously for a complete, immersive result.</p>
+                    <p>Transform a complex production pipeline into a one-click action with MuseSteamer. Generate visuals, ambient sound,
+                        and multi-person dialogue simultaneously for a complete, immersive result with your MuseSteamer AI Video.</p>
                 </article>
                 <article class="card">
                     <div class="flex items-center gap-4 mb-2">
@@ -64,7 +64,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round"
                                     d="M3.75 3v11.25A2.25 2.25 0 006 16.5h2.25M3.75 3h-1.5m1.5 0h16.5m0 0h1.5m-1.5 0v11.25A2.25 2.25 0 0118 16.5h-2.25m-7.5 0h7.5m-7.5 0l-1.125-1.5M12 16.5l1.125-1.5m-1.125 1.5l-1.125 1.5m1.125-1.5l1.125 1.5M4.875 6h14.25" />
                             </svg></div>
-                        <h3>Pioneering Latent Multi-Modal Planner</h3>
+                        <h3>Pioneering Latent Multi-Modal Planner from MuseSteamer</h3>
                     </div>
                     <p>Our breakthrough model autonomously plans character identities, dialogue emotions, and
                         interaction logic, ensuring coherent and cinema-realistic multi-character scenes.</p>
@@ -79,14 +79,14 @@
                         <h3>Millisecond-Level Audio-Visual Sync</h3>
                     </div>
                     <p>Our global generation of the human form—lips, expressions, and actions—ensures that every
-                        speaker's mouth movements align with the audio waveform at a millisecond level.</p>
+                        speaker's mouth movements align with the audio waveform at a millisecond level in your MuseSteamer AI Video.</p>
                 </article>
             </div>
             <div class="model-table-container">
                 <table class="model-table">
                     <thead>
                         <tr>
-                            <th>Model</th>
+                            <th>MuseSteamer Model</th>
                             <th>Resolution</th>
                             <th>Audio Capability</th>
                             <th>Core Features</th>
@@ -95,28 +95,28 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Turbo-Audio</td>
+                            <td>MuseSteamer AI Turbo-Audio</td>
                             <td>720P</td>
                             <td class="highlight-cell">With Audio</td>
                             <td>Industry-leading lip-sync; supports multi-person dialogue.</td>
                             <td>Narrative shorts, ad voiceovers.</td>
                         </tr>
                         <tr>
-                            <td>Turbo</td>
+                            <td>MuseSteamer AI Turbo</td>
                             <td>720P</td>
                             <td>Silent</td>
                             <td>Cinematic quality with strong lighting and detail.</td>
                             <td>Visual showcases, dynamic storyboards.</td>
                         </tr>
                         <tr>
-                            <td>Pro</td>
+                            <td>MuseSteamer AI Pro</td>
                             <td class="highlight-cell">1080P</td>
                             <td>Optional</td>
                             <td>Maximum detail, complex cinematography, artistic effects.</td>
                             <td>High-end commercials, film-grade trailers.</td>
                         </tr>
                         <tr>
-                            <td>Lite</td>
+                            <td>MuseSteamer AI Lite</td>
                             <td>480P / 720P</td>
                             <td>Optional</td>
                             <td>Fastest generation speed; high value.</td>
