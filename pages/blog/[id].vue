@@ -1,13 +1,16 @@
 <template>
-  <div class="min-h-screen bg-gray-900 text-slate-300">
+  <div class="min-h-screen  text-slate-300">
+    <div class="pt-20">
+      <Breadcrumbs :items="breadcrumbItems" />
+    </div>
     <div class="pt-24 md:pt-28 py-10 mx-auto w-11/12 max-w-4xl">
-      <button
+      <!-- <button
         @click="handleBack"
         class="inline-flex items-center text-slate-300 hover:text-[#83D0FB] transition-colors mb-8 group font-medium"
       >
         <div class="w-3 h-3 border-l-2 border-b-2 border-slate-300 group-hover:border-[#83D0FB] transform rotate-45 mr-2 transition-colors"></div>
         Back to Blog
-      </button>
+      </button> -->
 
       <!-- Loading state -->
       <div v-if="loading" class="flex justify-center items-center py-20">
@@ -27,7 +30,7 @@
       </div>
 
       <!-- Blog content -->
-      <article v-else-if="post" class="prose prose-lg max-w-none bg-gray-800/80 p-6 md:p-8 rounded-xl shadow-2xl border border-white/10 backdrop-blur-xl">
+      <article v-else-if="post" class="prose prose-lg max-w-none bg-gray-800/80 p-6 md:p-8 rounded-xl shadow-2xl   backdrop-blur-xl">
         <h1 class="text-3xl md:text-4xl font-bold mb-6 text-slate-100 border-l-4 border-[#6209F6] pl-4">{{ post.title }}</h1>
         
         <div class="flex items-center gap-4 mb-8">
@@ -103,7 +106,9 @@
 import { computed, ref, onMounted, type Ref, onBeforeUnmount } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useSeo } from '~/composables/useSeo';
+import Breadcrumbs from "~/components/Breadcrumbs.vue";
 import { getBlogCategoryList, getBlogList, type BlogCategory, type BlogPost } from '~/api';
+
 
 // 定义类型
 interface BlogData {
@@ -121,6 +126,9 @@ interface SeoOptions {
   type?: string;
   other?: Array<{ property: string; content: string }>;
 }
+
+
+
 
 // 声明 Nuxt 3 内置函数类型
 declare const useAsyncData: <T>(
@@ -209,6 +217,12 @@ const post = computed(() => {
     return null;
   }
 });
+
+const breadcrumbItems = ref([
+  { text: 'MuseSteamer AI Blog', to: '/blog'  },
+  { text: post.value?.url } 
+]);
+
 
 // 处理Markdown内容为HTML
 const processedContent = computed(() => {

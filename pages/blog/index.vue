@@ -1,7 +1,10 @@
 <template>
   <div class="container mx-auto px-4 " style="background-color: var(--bg-color);">
+    <div class="pt-20">
+      <Breadcrumbs :items="breadcrumbItems" />
+    </div>
     <PageHero title="MuseSteamer AI Video Generator Blog"
-      subtitle="Tips, tutorials, and inspiration for creating professional-quality videos with MuseSteamer AI video generation technology" />
+      subtitle="Tips, tutorials, and inspiration to create professional videos with MuseSteamer AI." />
 
     <!-- Categories filter -->
     <div class="mx-auto w-11/12 max-w-4xl mb-8">
@@ -109,6 +112,8 @@ import { useRouter } from 'vue-router'
 import { useSeo } from '~/composables/useSeo'
 import { getBlogCategoryList, getBlogList } from '~/api'
 import PageHero from '~/components/PageHero.vue';
+import Breadcrumbs from '~/components/Breadcrumbs.vue';
+
 // 声明 Nuxt 3 内置函数类型
 declare const useAsyncData: <T>(key: string, handler: () => Promise<T>) => Promise<{
   data: Ref<T | null>;
@@ -119,6 +124,10 @@ declare const useAsyncData: <T>(key: string, handler: () => Promise<T>) => Promi
 
 const router = useRouter()
 
+const breadcrumbItems = ref([
+  { text: 'MuseSteamer AI Blog' },
+  // { text: 'Seedance AI Blog' } // 最后一项没有 'to' 属性
+]);
 useSeo({
   title: "MuseSteamer AI Blog: Latest News",
   description: "MuseSteamer AI Blog shares insights on AI video creation, audio features, and creative workflows. Stay updated with guides, news and tutorials.",
