@@ -22,6 +22,7 @@ export const mainRoutes: RouteItem[] = [
   { id: "live-examples", name: "Examples" },
   { id: "pricing", name: "Pricing" },
   { id: "faq", name: "FAQ" },
+  { id: "blog",  name: "Blog", href: "/blog" },
 
 ]
 

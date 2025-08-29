@@ -1,79 +1,70 @@
 <template>
-  <main class="w-full mx-auto p-6 bg-blue-pale rounded-lg max-w-24xl min-h-screen">
-    <!-- Hero Section -->
-    <section 
-      id="blog-hero"
-      class="relative"
-    >
-      <PageHero 
-        title="Midjourney Video Generator Blog"
-        subtitle="Tips, tutorials, and inspiration for creating professional-quality videos with Midjourney Video Generator AI video generation technology"
-      />
-    </section>
-    
-    <!-- Categories filter - moved to top center -->
+  <div class="container mx-auto px-4 " style="background-color: var(--bg-color);">
+    <div class="mt-20">
+      <Breadcrumbs :items="breadcrumbItems" />
+    </div>
+    <PageHero title="MuseSteamer AI Video Generator Blog"
+      subtitle="Tips, tutorials, and inspiration to create professional videos with MuseSteamer AI." />
+
+    <!-- Categories filter -->
     <div class="mx-auto w-11/12 max-w-4xl mb-8">
       <div class="flex flex-wrap justify-center gap-2 md:gap-3">
-        <div 
-          v-for="category in allCategories" 
-          :key="category.id"
-          class="px-4 py-2 rounded-lg transition-all cursor-pointer text-sm md:text-base font-medium"
-          :class="currentCategory === category.id.toString() ? 'bg-blue-dark text-white shadow-md' : 'bg-white text-blue-navtext hover:bg-blue-light hover:text-blue-dark border border-blue-pricingborder'"
-          @click="handleCategoryChange(category.id.toString())"
-        >
+        <div v-for="category in allCategories" :key="category.id"
+          class="px-4 py-2 rounded-lg transition-all cursor-pointer text-sm md:text-base font-medium" :class="currentCategory === category.id.toString()
+            ? 'bg-gradient-to-r from-[#6209F6]/50 to-[#83D0FB]/50 text-white shadow-md'
+            : 'bg-gray-800/80 text-slate-300 hover:bg-gray-700/70 border border-white/10'"
+          @click="handleCategoryChange(category.id.toString())">
           {{ category.name }}
         </div>
       </div>
     </div>
-    
-    <!-- Blog list - centered -->
+
+    <!-- Blog list -->
     <div class="mx-auto w-11/12 max-w-4xl">
       <div class="mb-16">
         <!-- Loading state -->
         <div v-if="loading" class="flex justify-center items-center py-20">
-          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-dark"></div>
+          <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-[#6209F6]"></div>
         </div>
 
-        <!-- Blog posts and empty state - only show when data is loaded -->
+        <!-- Blog posts and empty state -->
         <div v-else>
           <div class="space-y-4 md:space-y-6">
-            <div 
-              v-for="post in blogData?.blogList || []" 
-              :key="post.id"
-              class="block bg-white rounded-xl p-4 md:p-6 shadow-sm hover:shadow-lg transition-all border border-blue-pricingborder hover:border-blue-dark hover:translate-y-[-2px] cursor-pointer group"
-              @click="navigateToBlog(post)"
-            >
+            <div v-for="post in blogData?.blogList || []" :key="post.id"
+              class="block bg-gray-800/80 rounded-xl p-4 md:p-6 shadow-lg hover:shadow-2xl transition-all border border-white/10 hover:border-[#6209F6] hover:-translate-y-1 cursor-pointer group backdrop-blur-xl"
+              @click="navigateToBlog(post)">
               <div class="flex flex-col md:flex-row md:justify-between md:items-start gap-2 md:gap-4 mb-3 md:mb-4">
                 <div class="flex-1 min-w-0">
-                  <h2 class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-blue-h1 group-hover:text-blue-dark transition-colors truncate">{{ post.title }}</h2>
-                  <p class="text-sm md:text-base text-blue-navtext line-clamp-2">{{ post.abstract }}</p>
+                  <h2
+                    class="text-lg md:text-xl font-bold mb-1 md:mb-2 text-slate-100 group-hover:text-[#83D0FB] transition-colors truncate">
+                    {{ post.title }}</h2>
+                  <p class="text-sm md:text-base text-slate-400 line-clamp-2">{{ post.abstract }}</p>
                 </div>
-                <span class="px-3 py-1 bg-blue-dark text-white text-xs md:text-sm rounded-full whitespace-nowrap inline-block w-fit font-medium">
+                <span
+                  class="px-3 py-1 bg-gradient-to-r from-[#6209F6]/80 to-[#83D0FB]/80 text-white text-xs md:text-sm rounded-full whitespace-nowrap inline-block w-fit font-medium">
                   {{ getCategoryLabel(post.class_id) }}
                 </span>
               </div>
-              <div class="text-blue-footertext text-xs md:text-sm">
+              <div class="text-slate-500 text-xs md:text-sm">
                 {{ formatDate(post.created_time) }}
               </div>
             </div>
           </div>
-          
+
           <!-- Empty state -->
           <div v-if="(blogData?.blogList || []).length === 0" class="text-center py-20">
-            <h2 class="text-2xl font-bold text-blue-h1 mb-4">No Blog Posts Found</h2>
-            <p class="text-blue-navtext">No blog posts found in the current category.</p>
+            <h2 class="text-2xl font-bold text-slate-100 mb-4">No Blog Posts Found</h2>
+            <p class="text-slate-400">No blog posts found in the current category.</p>
           </div>
 
-          <!-- Pagination - only show when total > 20 -->
-          <div v-if="(blogData?.blogList || []).length > 0 && (blogData?.total || 0) > 20" class="mt-8 flex justify-center">
+          <!-- Pagination -->
+          <div v-if="(blogData?.blogList || []).length > 0 && (blogData?.total || 0) > 20"
+            class="mt-8 flex justify-center">
             <div class="flex items-center space-x-2">
               <!-- Previous page button -->
-              <button 
-                @click="goToPage(currentPage - 1)"
-                :disabled="currentPage <= 1"
+              <button @click="goToPage(currentPage - 1)" :disabled="currentPage <= 1"
                 class="px-3 py-2 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                :class="currentPage <= 1 ? 'bg-blue-light text-blue-footertext' : 'bg-white border border-blue-pricingborder text-blue-navtext hover:bg-blue-light hover:border-blue-dark'"
-              >
+                :class="currentPage <= 1 ? 'bg-gray-800 text-slate-600' : 'bg-gray-800/80 border border-white/10 text-slate-300 hover:bg-gray-700/70 hover:border-[#6209F6]'">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
                 </svg>
@@ -82,25 +73,19 @@
               <!-- Page numbers -->
               <div class="flex items-center space-x-1">
                 <template v-for="page in visiblePages" :key="page">
-                  <button 
-                    v-if="page !== '...'"
-                    @click="goToPage(page)"
+                  <button v-if="page !== '...'" @click="goToPage(page)"
                     class="px-3 py-2 rounded-lg transition-all text-sm font-medium"
-                    :class="page === currentPage ? 'bg-blue-dark text-white shadow-md' : 'bg-white border border-blue-pricingborder text-blue-navtext hover:bg-blue-light hover:border-blue-dark'"
-                  >
+                    :class="page === currentPage ? 'bg-gradient-to-r from-[#6209F6]/50 to-[#83D0FB]/50 text-white shadow-md' : 'bg-gray-800/80 border border-white/10 text-slate-300 hover:bg-gray-700/70 hover:border-[#6209F6]'">
                     {{ page }}
                   </button>
-                  <span v-else class="px-2 text-blue-footertext">...</span>
+                  <span v-else class="px-2 text-slate-500">...</span>
                 </template>
               </div>
 
               <!-- Next page button -->
-              <button 
-                @click="goToPage(currentPage + 1)"
-                :disabled="currentPage >= computedTotalPages"
+              <button @click="goToPage(currentPage + 1)" :disabled="currentPage >= computedTotalPages"
                 class="px-3 py-2 rounded-lg transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-                :class="currentPage >= computedTotalPages ? 'bg-blue-light text-blue-footertext' : 'bg-white border border-blue-pricingborder text-blue-navtext hover:bg-blue-light hover:border-blue-dark'"
-              >
+                :class="currentPage >= computedTotalPages ? 'bg-gray-800 text-slate-600' : 'bg-gray-800/80 border border-white/10 text-slate-300 hover:bg-gray-700/70 hover:border-[#6209F6]'">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
                 </svg>
@@ -108,14 +93,17 @@
             </div>
           </div>
 
-          <!-- Page info - only show when total > 20 -->
-          <div v-if="(blogData?.blogList || []).length > 0 && (blogData?.total || 0) > 20" class="mt-4 text-center text-sm text-blue-footertext">
-            Showing {{ (currentPage - 1) * pageSize + 1 }} to {{ Math.min(currentPage * pageSize, blogData?.total || 0) }} of {{ blogData?.total || 0 }} posts
+          <!-- Page info -->
+          <div v-if="(blogData?.blogList || []).length > 0 && (blogData?.total || 0) > 20"
+            class="mt-4 text-center text-sm text-slate-500">
+            Showing {{ (currentPage - 1) * pageSize + 1 }} to {{ Math.min(currentPage * pageSize, blogData?.total || 0)
+            }} of {{
+              blogData?.total || 0 }} posts
           </div>
         </div>
       </div>
     </div>
-  </main>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -123,6 +111,8 @@ import { onMounted, type Ref, ref, computed, watch } from 'vue'
 import { useRouter } from 'vue-router'
 import { useSeo } from '~/composables/useSeo'
 import { getBlogCategoryList, getBlogList } from '~/api'
+import PageHero from '~/components/PageHero.vue';
+import Breadcrumbs from '~/components/Breadcrumbs.vue';
 
 // 声明 Nuxt 3 内置函数类型
 declare const useAsyncData: <T>(key: string, handler: () => Promise<T>) => Promise<{
@@ -134,9 +124,13 @@ declare const useAsyncData: <T>(key: string, handler: () => Promise<T>) => Promi
 
 const router = useRouter()
 
+const breadcrumbItems = ref([
+  { text: 'MuseSteamer AI Blog' },
+  // { text: 'Seedance AI Blog' } // 最后一项没有 'to' 属性
+]);
 useSeo({
-    title: "Blog | Midjourney model  Image & Video Generation",
-    description: "Discover Midjourney model's AI technology for creating professional videos and animations. Get tips and updates to enhance your visual content.",
+  title: "MuseSteamer AI Blog: Latest News",
+  description: "MuseSteamer AI Blog shares insights on AI video creation, audio features, and creative workflows. Stay updated with guides, news and tutorials.",
 });
 
 // 使用 useAsyncData 获取数据
@@ -180,19 +174,19 @@ const blogData = ref(initialData.value)
 const fetchBlogData = async () => {
   loading.value = true
   error.value = ''
-  
+
   try {
     // Build API parameters, supporting category filtering
     const apiParams: any = {
       page: currentPage.value,
       page_size: pageSize.value
     }
-    
+
     // Add category parameter
     if (currentCategory.value) {
       apiParams.class_id = currentCategory.value
     }
-    
+
     // Get blog list
     const getList = await getBlogList(apiParams) as any;
     if (getList.code === 200) {
@@ -276,7 +270,7 @@ const visiblePages = computed(() => {
 // 获取分类标签显示文本
 const getCategoryLabel = (classId: number) => {
   if (!blogData.value?.categoryList) return 'Uncategorized'
-  
+
   const category = blogData.value.categoryList.find((cat: any) => cat.id === classId)
   return category ? category.name : 'Uncategorized'
 }
@@ -312,18 +306,18 @@ const navigateToBlog = (post: any) => {
   router.push(`/blog/${url[url.length - 1]}`)
 }
 
-  // Set canonical URL when mounted
+// Set canonical URL when mounted
 onMounted(() => {
   // Set default category to first available category
   if (allCategories.value.length > 0 && !currentCategory.value) {
     currentCategory.value = allCategories.value[0].id.toString()
   }
-  
+
   // Add structured data
   const structuredData = {
     "@context": "https://schema.org",
     "@type": "Blog",
-          name: "Midjourney Video Generator Blog",
+    name: "Midjourney Video Generator Blog",
     description: "Professional AI image generation and animation technology tutorials and insights",
     url: "https://www.musesteamer2.com/blog",
     publisher: {
@@ -343,6 +337,4 @@ onMounted(() => {
 });
 </script>
 
-<style>
-
-</style>
+<style></style>

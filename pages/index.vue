@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mt-32">
     <Hero />
     <!-- <div class="container text-center">
       <a href="#" class="btn btn-primary">Start Creating Your First Video &rarr;</a>

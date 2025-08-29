@@ -1,7 +1,9 @@
 <template>
-  <div class="flex flex-col min-h-screen justify-between">
+  <div class="flex flex-col min-h-screen">
     <Navbar/>
-    <slot />
+    <main class="flex-grow">
+      <slot />
+    </main>
     <Footer />
     <BackToTop />
   </div>
