@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto px-4 " style="background-color: var(--bg-color);">
-    <div class="pt-20">
+    <div class="mt-20">
       <Breadcrumbs :items="breadcrumbItems" />
     </div>
     <PageHero title="MuseSteamer AI Video Generator Blog"
