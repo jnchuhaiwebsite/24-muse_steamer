@@ -3,7 +3,7 @@
     <div class="mt-20">
       <Breadcrumbs :items="breadcrumbItems" />
     </div>
-    <PageHero title="MuseSteamer AI Video Generator Blog"
+    <PageHero title="MuseSteamer AI Blog"
       subtitle="Tips, tutorials, and inspiration to create professional videos with MuseSteamer AI." />
 
     <!-- Categories filter -->
