@@ -1,6 +1,6 @@
 <template>
     <div class="container mx-auto px-4"  style="background-color: var(--bg-color);">
-        <PageHero title="MuseSteamer AI Video Generator with Pro Audio by MuseSteamer"
+        <PageHero title="MuseSteamer AI Video Generator with Pro Audio"
             subtitle="With the Baidu MuseSteamer AI Model, create dynamic MuseSteamer AI videos from images and prompts, featuring cinematic camera moves and pro audio effects with MuseSteamer." />
 
         <!-- 主生成器区域 -->

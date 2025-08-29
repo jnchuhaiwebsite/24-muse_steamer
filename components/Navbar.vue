@@ -8,7 +8,7 @@
         <div class="flex items-center justify-between h-20">
           <!-- Logo -->
           <div class="flex-shrink-0">
-            <NuxtLink to="/">
+            <NuxtLink to="/" title="MuseSteamer AI Video Generator">
               <span class="gradient-text" style="font-size: 1.5rem; font-weight: 700;">MuseSteamer AI</span>
             </NuxtLink>
           </div>
@@ -18,6 +18,7 @@
             <template v-for="(section, index) in sections" :key="index">
               <NuxtLink
                 :to="section.href || `/#${section.id}`"
+                :title="section.name"
                 class="relative text-banana-text-light hover:text-banana-primary-yellow transition-all cursor-pointer px-4 py-2.5 rounded-lg hover:shadow-lg whitespace-nowrapr" 
               >
                 {{ section.name }}
