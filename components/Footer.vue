@@ -1,23 +1,95 @@
 <template>
-  <footer class="py-8 md:py-12" style="background-color: var(--bg-color); color: var(--text-muted-color);">
-    <div class="container mx-auto px-4 text-center">
-      <span class="gradient-text" style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; display: inline-block;">MuseSteamer AI</span>
-      <p class="max-w-xl mx-auto mb-4 text-sm">
-        Unleash your creativity with MuseSteamer AI, the advanced AI video generator. Transform static images into stunning, cinematic videos with simple text prompts. Start creating for free!
-      </p>
-      <div class="text-sm">
-        <p>© 2025 MuseSteamer All rights reserved.</p>
-        <p>
-          <a href="mailto:support@musesteamer2.com" class="footer-link">support@musesteamer2.com</a>
-        </p>
+  <footer
+    class="relative bg-banana-dark-bg text-banana-text-muted py-8 md:py-12 pt-8 border-t border-banana-border-color/30 mobile-footer">
+    <div class="max-w-6xl mx-auto px-4 mobile-padding">
+
+      <!-- 友情链接区域 -->
+      <div class="mb-8" v-if="partnerSites && partnerSites.length > 0">
+        <div class="text-banana-text-light font-medium mb-4 text-left text-sm md:text-lg">Partner Sites</div>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          <a v-for="(item, index) in partnerSites" :key="index" :href="item.url" target="_blank"
+            rel="noopener noreferrer"
+            class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors text-sm">
+            {{ item.name }}
+          </a>
+        </div>
+      </div>
+
+      <!-- 分割线 -->
+      <div class="w-full h-px  mb-8 border-t border-white/30" v-if="partnerSites && partnerSites.length > 0"></div>
+
+      <!-- 主要内容区域 -->
+      <div class="flex flex-col md:flex-row gap-8 md:gap-16 mobile-footer-links">
+        <!-- Logo 和描述 -->
+        <div class="flex-1">
+          <div class="flex flex-col items-start text-left">
+            <span class="gradient-text"
+              style="font-size: 1.8rem; font-weight: 700; margin-bottom: 1rem; display: inline-block;">MuseSteamer
+              AI</span>
+            <p class="max-w-xl mx-auto mb-4 text-sm">
+              Unleash your creativity with MuseSteamer AI, the advanced AI video generator. Transform static images into
+              stunning, cinematic videos with simple text prompts. Start creating for free!
+            </p>
+            <div class="text-sm">
+              <p>© 2025 MuseSteamer All rights reserved.</p>
+              <p>
+                <a href="mailto:support@musesteamer2.com" class="footer-link">support@musesteamer2.com</a>
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 导航链接和法律条款 -->
+        <div class="flex-1 flex flex-col sm:flex-row gap-6 md:gap-8 md:justify-end">
+
+          <!-- 法律条款 -->
+          <div class="flex-1 text-center md:text-right">
+            <div class="text-banana-text-light font-medium mb-4 text-sm md:text-lg">Legal</div>
+            <div class="flex flex-col gap-2 items-center md:items-end">
+              <NuxtLink to="/subsidiary/privacy-policy"
+                class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors">Privacy Policy
+              </NuxtLink>
+              <NuxtLink to="/subsidiary/terms-of-service"
+                class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors">Terms of Service
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </footer>
 </template>
 
 <script setup lang="ts">
-// Script content has been removed as it was related to unused features.
+import { ref } from 'vue'
+import { useNavigation } from '~/utils/navigation'
+import { getFriendLinkList } from '~/api'
+import { useAsyncData } from 'nuxt/app'
+
+interface PartnerSite {
+  url: string
+  name: string
+}
+
+const { activeSection, sections, handleNavClick, handleScroll, footerSections, productsSections } = useNavigation()
+
+// 处理链接点击，支持新标签页打开
+const handleLinkClick = (href: string, openInNewTab?: boolean) => {
+  if (openInNewTab) {
+    window.open(href, '_blank', 'noopener,noreferrer');
+  }
+};
+
+// 服务端请求友情链接
+const { data: partnerSites, error } = await useAsyncData('partnerSites', async () => {
+  const res = await getFriendLinkList()
+  if (res.code === 200) {
+    return res.data as PartnerSite[]
+  }
+  return []
+})
 </script>
+
 
 <style scoped>
 .footer-link {
@@ -25,7 +97,8 @@
   text-decoration: none;
   transition: color 0.3s ease;
 }
+
 .footer-link:hover {
   color: #83D0FB;
 }
-</style> 
+</style>

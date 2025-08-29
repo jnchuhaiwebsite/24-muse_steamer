@@ -1,7 +1,7 @@
 <template>
     <div class="container mx-auto px-4"  style="background-color: var(--bg-color);">
-        <PageHero title="MuseSteamer AI Video Generator with Pro Audio"
-            subtitle="With the Baidu MuseSteamer AI Model, create dynamic videos from images and prompts, featuring cinematic camera moves and pro audio effects." />
+        <PageHero title="MuseSteamer AI Video Generator with Pro Audio by MuseSteamer"
+            subtitle="With the Baidu MuseSteamer AI Model, create dynamic MuseSteamer AI videos from images and prompts, featuring cinematic camera moves and pro audio effects with MuseSteamer." />
 
         <!-- 主生成器区域 -->
         <div class="relative w-full  mt-8 mb-12">
@@ -67,12 +67,12 @@
                                             <span class="text-xs text-slate-400">{{ model.description
                                             }}</span>
                                         </div>
-                                        <span v-if="selectedModel === model.id"
+                                        <!-- <span v-if="selectedModel === model.id"
                                             class="text-[#6209F6] absolute inset-y-0 right-0 flex items-center pr-4">
                                             <svg class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                                                 <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.052-.143z" clip-rule="evenodd" />
                                             </svg>
-                                        </span>
+                                        </span> -->
                                     </li>
                                 </ul>
                             </div>
@@ -83,7 +83,7 @@
                         <div>
                             <label for="image-upload"
                                 class="block text-white md:text-lg font-semibold text-slate-800 dark:text-slate-100 mb-3">
-                                Upload Image <span class="text-rose-500">*</span>
+                                Upload Image for Your MuseSteamer AI Video <span class="text-rose-500">*</span>
                             </label>
                             <div class="group relative w-full h-[160px] rounded-2xl p-4
                       border-2 border-dashed border-slate-300/60 dark:border-slate-600/70
@@ -161,7 +161,7 @@
                             leave-to-class="opacity-0 -translate-y-2 scale-95">
                             <div v-if="selectedModel === 'musesteamer-2.0-turbo-i2v-audio'">
                                 <label
-                                    class="block text-white md:text-lg font-semibold text-slate-800 dark:text-slate-100 mb-3 ">Video Duration</label>
+                                    class="block text-white md:text-lg font-semibold text-slate-800 dark:text-slate-100 mb-3 ">MuseSteamer AI Video Duration</label>
                                 <div class="grid grid-cols-2 gap-3 ">
                                     <label v-for="duration in currentVideoDurations" :key="duration.value"
                                         class="cursor-pointer group">
@@ -194,8 +194,8 @@
                                     stroke-width="4" />
                                 <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                             </svg>
-                            <span v-if="isGenerating">Generating...</span>
-                            <span v-else>🎬 Generate Video</span>
+                            <span v-if="isGenerating">Generating Your MuseSteamer AI Video...</span>
+                            <span v-else>🎬 Generate MuseSteamer AI Video</span>
 
                             <span class="absolute -top-2 -right-2 rounded-full px-2.5 py-1 text-xs font-bold text-white
                       bg-gradient-to-r from-emerald-500 to-teal-500
@@ -229,7 +229,7 @@
                                 poster="https://resp.musesteamer2.com/steamer/images/MuseSteamer-AI-demo.webp"
                                 loading="lazy" controls
                                 class="w-full h-full object-contain" autoplay loop muted playsinline></video>
-                            <img v-else src="https://resp.musesteamer2.com/steamer/images/MuseSteamer-AI-demo.webp" class="w-full h-full object-contain" alt="MuseSteamer AI Demo Preview"/>
+                            <img v-else src="https://resp.musesteamer2.com/steamer/images/MuseSteamer-AI-demo.webp" class="w-full h-full object-contain" alt="MuseSteamer AI Video Demo Preview"/>
                         </div>
 
                         <!-- 提示条 -->
@@ -250,7 +250,7 @@
                                     <path class="opacity-75" fill="currentColor"
                                         d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z" />
                                 </svg>
-                                <p class="text-white/95 text-sm md:text-base">Creating your video with MuseSteamer AI...
+                                <p class="text-white/95 text-sm md:text-base">Creating your MuseSteamer AI video with MuseSteamer...
                                 </p>
                             </div>
                         </div>
@@ -389,7 +389,7 @@ const models = [
 ];
 
 // 选中的模型和时长
-const selectedModel = ref('musesteamer-2.0-lite-i2v'); // 默认选择
+const selectedModel = ref('musesteamer-2.0-turbo-i2v-audio'); // 默认选择
 const selectedDuration = ref(5); // 默认选择 5s
 
 // 根据所选模型和时长动态计算消耗的积分
@@ -459,14 +459,14 @@ const handleImageUpload = (event: Event) => {
     // 1. 检查图片格式
     const allowedTypes = ['image/jpeg', 'image/png', 'image/webp'];
     if (!allowedTypes.includes(file.type)) {
-        $toast.error('Unsupported image format. Please use JPEG, PNG or WEBP.');
+        $toast.error('Unsupported image format for MuseSteamer AI Video. Please use JPEG, PNG or WEBP.');
         cleanup();
         return;
     }
 
     // 2. 检查图片大小
     if (file.size > 10 * 1024 * 1024) { // 10MB
-        $toast.error('Image size must be less than 10MB.');
+        $toast.error('Image size must be less than 10MB for a MuseSteamer AI Video.');
         cleanup();
         return;
     }
@@ -480,7 +480,7 @@ const handleImageUpload = (event: Event) => {
 
             // 检查尺寸
             if (width < 300 || height < 300) {
-                $toast.error('Image dimensions must be at least 300px.');
+                $toast.error('Image dimensions must be at least 300px for a MuseSteamer AI Video.');
                 cleanup();
                 return;
             }
@@ -488,7 +488,7 @@ const handleImageUpload = (event: Event) => {
             // 检查宽高比 (示例，可以调整)
             const aspectRatio = width / height;
             if (aspectRatio <= 1 / 4 || aspectRatio >= 4) {
-                 $toast.error('Image aspect ratio must be between 1/4 and 4.');
+                 $toast.error('Image aspect ratio for MuseSteamer AI Video must be between 1/4 and 4.');
                 cleanup();
                 return;
             }
@@ -605,7 +605,7 @@ const handleVideoRequest = async () => {
             if (uploadResponse.code === 200 && typeof uploadResponse.data === 'string') {
                 imageUrl = uploadResponse.data;
             } else {
-                throw new Error(uploadResponse.msg || 'Failed to upload image');
+                throw new Error(uploadResponse.msg || 'Failed to upload image for your MuseSteamer AI Video');
             }
         }
 
@@ -639,7 +639,7 @@ const handleVideoRequest = async () => {
         }
 
     } catch (error: any) {
-        $toast.error(error.message || 'Video generation failed, please try again.');
+        $toast.error(error.message || 'MuseSteamer AI Video generation failed, please try again.');
         stopProgressAnimation();
         stopCheckTask();
     }
@@ -661,11 +661,11 @@ const checkTaskStatus = async (taskId: string) => {
                 stopProgressAnimation();
                 stopCheckTask();
                 // videoTaskStore.clearTask();
-                $toast.success('Video generated successfully!');
+                $toast.success('MuseSteamer AI Video generated successfully!');
 
             } else if (taskData.status < 0) { // 通常-1表示失败
                 // 任务失败
-                throw new Error(taskData.status_msg || 'Video generation failed');
+                throw new Error(taskData.status_msg || 'MuseSteamer AI Video generation failed');
             }
             // 如果状态是进行中，则不执行任何操作，等待下一次轮询
         } else {
