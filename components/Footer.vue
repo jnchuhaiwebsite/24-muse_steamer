@@ -9,6 +9,7 @@
         <div class="flex flex-wrap gap-x-6 gap-y-2">
           <a v-for="(item, index) in partnerSites" :key="index" :href="item.url" target="_blank"
             rel="noopener noreferrer"
+            :title="item.url"
             class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors text-sm">
             {{ item.name }}
           </a>
