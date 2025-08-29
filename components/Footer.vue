@@ -34,7 +34,7 @@
             <div class="text-sm">
               <p>© 2025 MuseSteamer All rights reserved.</p>
               <p>
-                <a href="mailto:support@musesteamer2.com" class="footer-link">support@musesteamer2.com</a>
+                <a href="mailto:support@musesteamer2.com" class="footer-link" title="Email">support@musesteamer2.com</a>
               </p>
             </div>
           </div>
@@ -48,9 +48,11 @@
             <div class="text-banana-text-light font-medium mb-4 text-sm md:text-lg">Legal</div>
             <div class="flex flex-col gap-2 items-center md:items-end">
               <NuxtLink to="/subsidiary/privacy-policy"
+                title="Privacy Policy"
                 class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors">Privacy Policy
               </NuxtLink>
               <NuxtLink to="/subsidiary/terms-of-service"
+                title="Terms of Service"
                 class="text-banana-text-muted hover:text-banana-primary-yellow transition-colors">Terms of Service
               </NuxtLink>
             </div>
